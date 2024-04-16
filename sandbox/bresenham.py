@@ -8,7 +8,7 @@ def bresenham(x1, y1, x2, y2):
     sx = -1 if x1 > x2 else 1
     sy = -1 if y1 > y2 else 1
     if dx > dy:
-        err = dx / 2.0
+        err = dx >> 1 # Use logical right shift to divide by 2
         while x != x2:
             points.append((x, y))
             err -= dy
@@ -17,7 +17,7 @@ def bresenham(x1, y1, x2, y2):
                 err += dx
             x += sx
     else:
-        err = dy / 2.0
+        err = dy >> 1 # Use logical right shift to divide by 2
         while y != y2:
             points.append((x, y)) # In Assembly this will be save on memory
             err -= dx
