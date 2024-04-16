@@ -50,8 +50,10 @@ class Application(tk.Tk):
         self.points.append((event.x, event.y))
         
         if len(self.points) == 2:
+            print("Points:", self.points)
             line_points = bresenham(*self.points[0], *self.points[1])
             for point in line_points:
+                print(point)
                 self.draw_point(point)
 
     def draw_point(self, point):
