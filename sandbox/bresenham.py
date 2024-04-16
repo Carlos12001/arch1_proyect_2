@@ -1,5 +1,10 @@
 import tkinter as tk
 
+"""
+def generate_letter(char a)
+return de los puntos con los espacios en blancos de 5x5
+"""
+
 def bresenham(x1, y1, x2, y2):
     points = []
     dx = abs(x2 - x1)
@@ -43,7 +48,7 @@ class Application(tk.Tk):
 
     def on_canvas_click(self, event):
         if len(self.points) == 2:
-            self.canvas.delete("all")
+            # self.canvas.delete("all")
             self.points = []
         
         self.canvas.create_oval(event.x - 3, event.y - 3, event.x + 3, event.y + 3, fill='red')
