@@ -2,8 +2,8 @@ def my_abs(x:int)->int:
     mask = x >> 31
     return (x + mask) ^ mask
 
-def bresenham(x1:int, y1:int, x2:int, y2:int, points_count:int)->(list[(int, int)], int):
-    points_count += 1
+def bresenham(x1:int, y1:int, x2:int, y2:int, points_count:int)->(list[(int, int)],
+                                                                  int):
     points = []
     dx = my_abs(x2 - x1)
     dy = my_abs(y2 - y1)
@@ -31,6 +31,7 @@ def bresenham(x1:int, y1:int, x2:int, y2:int, points_count:int)->(list[(int, int
                 err += dy
             y += sy
     points.append((x2, y2))  # Make sure the endpoint is included
+    points_count += 1
     return (points, points_count)
 
 def points2pixel(letter:list[int],points:list[(int, int)],points_count:int):
