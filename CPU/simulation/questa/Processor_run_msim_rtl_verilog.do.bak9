@@ -1,0 +1,15 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+/home/ignacio/Downloads/CPU_uni/CPU/RAM {/home/ignacio/Downloads/CPU_uni/CPU/RAM/RAM.v}
+vlog -sv -work work +incdir+/home/ignacio/Downloads/CPU_uni/CPU/VGA {/home/ignacio/Downloads/CPU_uni/CPU/VGA/generate_graphic.sv}
+vlog -sv -work work +incdir+/home/ignacio/Downloads/CPU_uni/CPU/VGA {/home/ignacio/Downloads/CPU_uni/CPU/VGA/generate_rectangle.sv}
+vlog -sv -work work +incdir+/home/ignacio/Downloads/CPU_uni/CPU/VGA {/home/ignacio/Downloads/CPU_uni/CPU/VGA/pll.sv}
+vlog -sv -work work +incdir+/home/ignacio/Downloads/CPU_uni/CPU/VGA {/home/ignacio/Downloads/CPU_uni/CPU/VGA/vga_controller.sv}
+vlog -sv -work work +incdir+/home/ignacio/Downloads/CPU_uni/CPU {/home/ignacio/Downloads/CPU_uni/CPU/TopModule.sv}
+vlog -sv -work work +incdir+/home/ignacio/Downloads/CPU_uni/CPU {/home/ignacio/Downloads/CPU_uni/CPU/microarchitecture.sv}
+
