@@ -20,8 +20,8 @@ module datapath(input logic         clk, reset,
 	logic [31:0] ExtImmD, rd1D, rd2D, PCPlus8D;
 	logic [31:0] rd1E, rd2E, ExtImmE, SrcAE, SrcBE, WriteDataE, ALUResultE;
 	logic [31:0] ReadDataW, ALUOutW, ResultW;
-	logic [3:0]  RA1D, RA2D, RAEE, RA2E, WA3E, WA3M, WA3W;
-	logic        Match_1E_E, Match_2D_E;
+	logic [3:0]  RA1D, RA2D, RA1E, RA2E, WA3E, WA3M, WA3W;
+	logic        Match_1D_E, Match_2D_E;
 	
 	
 	
@@ -53,8 +53,8 @@ module datapath(input logic         clk, reset,
 	
 	// Memory stage
 	flopr #(32) aluresreg(clk, reset, ALUResultE, ALUOutM);
-	flopr #(32) wdreg(clk, reset, ALUResultE, ALUOutM);
-	flopr #(4) wa3mreg(clk, reset, ALUResultE, ALUOutM);
+	flopr #(32) wdreg(clk, reset, WriteDataE, WriteDataM);
+	flopr #(4) wa3mreg(clk, reset, WA3E, WA3M);
 	
 	// Writeback stage
 	flopr #(32) aluoutreg(clk, reset, ALUOutM, ALUOutW);
@@ -68,7 +68,7 @@ module datapath(input logic         clk, reset,
 	eqcmp #(4) m2(WA3M, RA2E, Match_2E_M);
 	eqcmp #(4) m3(WA3W, RA2E, Match_2E_W);
 	eqcmp #(4) m4a(WA3E, RA1D, Match_1D_E);
-	eqcmp #(4) m4b(WA3E, RA2D, Match_1D_E);
+	eqcmp #(4) m4b(WA3E, RA2D, Match_2D_E);
 	assign Match_12D_E = Match_1D_E | Match_2D_E;
 
 endmodule

@@ -1,11 +1,11 @@
-module dmem(input logic         clk, we,
-				input logic  [31:0] a, wd,
+module dmem(input  logic        clk, we,
+				input  logic [31:0] a, wd,
 				output logic [31:0] rd);
 				
-   logic [31:0] RAM[2097151:0];
+   logic [31:0] RAM[63:0];
 	
    initial
-      $readmemh("memfile.dat",RAM);
+      $readmemh("memfile.dat", RAM);
 		
    assign rd = RAM[a[22:2]]; // word aligned
 	
