@@ -344,3 +344,5 @@ $RECYCLE.BIN/
 # Others ignores
 # !sandbox/example.txt
 sandbox/simulation
+incremental_db
+simulation/*
