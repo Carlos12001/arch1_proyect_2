@@ -346,3 +346,4 @@ $RECYCLE.BIN/
 sandbox/simulation
 incremental_db
 simulation/*
+!c5_pin_model_dump.txt
