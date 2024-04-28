@@ -41,23 +41,24 @@ def points2pixel(letter:list[int],points:list[(int, int)],points_count:int):
         if x == 0:
             letter[y] = 1
         elif x == 1:
-            letter[y+5] = 1
+            letter[y+6] = 1
         elif x == 2:
-            letter[y+10] = 1
+            letter[y+12] = 1
         elif x == 3:
-            letter[y+15] = 1
+            letter[y+18] = 1
         elif x == 4:
-            letter[y+20] = 1
+            letter[y+24] = 1
         else:
             return
 
 def generate_letter(char: int)->list[int]:
     letter = [
-                0,0,0,0,0,
-                0,0,0,0,0,
-                0,0,0,0,0,
-                0,0,0,0,0,
-                0,0,0,0,0
+                0,0,0,0,0,0,
+                0,0,0,0,0,0,
+                0,0,0,0,0,0,
+                0,0,0,0,0,0,
+                0,0,0,0,0,0,
+                0,0,0,0,0,0
                 ]
     if char == 32: # SPACE
         counter_points = 0
@@ -231,7 +232,12 @@ if __name__ == "__main__":
     letter = generate_letter(ord("A"))
     s = ""
     for i,pixel in enumerate(letter,1):
-        s += str(pixel) if pixel==1 else " "
-        s += "\n" if i%5==0 else " "
+        s += str(pixel) if pixel==1 else str(0)
+        s += "\n" if i%6==0 else " "
     print(s)
+
     
+    for i,pixel in enumerate(letter,1):
+        s += str(pixel) if pixel==1 else " "
+        s += "\n" if i%6==0 else " "
+    print(s)
