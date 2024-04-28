@@ -67,12 +67,25 @@ def generate_letter(char):
     elif char == 44: # COMMA
         counter_points = 0
         points = []
-        # bresenham
+        
+        result =  bresenham(4,1,3,2, counter_points)
+        points += result[0]
+        counter_points = result[1]
+
+
+        
         points2pixel(letter,points,counter_points)
+        
     elif char == 46: # POINT
         counter_points = 0
         points = []
-        # bresenham
+        
+        result =  bresenham(3,2,3,2, counter_points)
+        points += result[0]
+        counter_points = result[1]
+
+
+        
         points2pixel(letter,points,counter_points)
         
         
@@ -433,15 +446,15 @@ def generate_letter(char):
         points += result[0]
         counter_points = result[1]
         
-        result =  bresenham(1,4,3,4, counter_points)
+        result =  bresenham(1,4,2,4, counter_points)
         points += result[0]
         counter_points = result[1]
         
-        result =  bresenham(4,1,4,3, counter_points)
+        result =  bresenham(4,1,4,2, counter_points)
         points += result[0]
         counter_points = result[1]
         
-        result =  bresenham(3,3,3,3, counter_points)
+        result =  bresenham(3,3,4,4, counter_points)
         points += result[0]
         counter_points = result[1]
         points2pixel(letter,points,counter_points)
@@ -623,14 +636,39 @@ def generate_letter(char):
         counter_points = result[1]
         points2pixel(letter,points,counter_points)
     else:
-        pass
+        counter_points = 0
+        points = []
+        result =  bresenham(0,0,4,0, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(4,1,4,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(0,1,0,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(1,3,3,3, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(1,4,3,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(2,2,2,2, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        points2pixel(letter,points,counter_points)
     return letter
 
 if __name__ == "__main__":
     l = [ord(" "),ord(","),ord(".")] + list(range(ord("A"),ord("Z")+1))
     print(f"cases total: {len(l)}")
     
-    letter = generate_letter(ord("Z"))
+    letter = generate_letter("12")
     s = ""
 
 
