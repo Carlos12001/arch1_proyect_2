@@ -74,6 +74,8 @@ def generate_letter(char):
         points = []
         # bresenham
         points2pixel(letter,points,counter_points)
+        
+        
     elif char == 65: # A
         counter_points = 0
         points = []
@@ -93,44 +95,144 @@ def generate_letter(char):
         result = bresenham(3,1,3,3, counter_points)
         points += result[0]
         counter_points = result[1]
+        points2pixel(letter,points,counter_points)
+        
+        
+    elif char == 66:#B
+        counter_points = 0
+        points = []
+        
+        result =  bresenham(1,4,1,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(3,4,3,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(0,1,0,3, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(2,1,2,3, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(4,1,4,3, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(0,0,4,0, counter_points)
+        points += result[0]
+        counter_points = result[1]
 
         points2pixel(letter,points,counter_points)
-    elif char == 66:
+        
+        
+    elif char == 67:#C
+        counter_points = 0
+        points = []
+        
+        result =  bresenham(0,1,0,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+                
+        result =  bresenham(0,0,4,0, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+                
+        result =  bresenham(4,1,4,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        
+        points2pixel(letter,points,counter_points)
+    elif char == 68:#D
+        counter_points = 0
+        points = []
+        
+        result =  bresenham(0,1,0,3, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+                
+        result =  bresenham(0,0,4,0, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+                
+        result =  bresenham(4,1,4,3, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(1,4,3,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        points2pixel(letter,points,counter_points)
+    elif char == 69:#E
+        counter_points = 0
+        points = []
+        result =  bresenham(0,1,0,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+                
+        result =  bresenham(2,1,2,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+                
+        result =  bresenham(4,1,4,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        result =  bresenham(0,0,4,0, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        points2pixel(letter,points,counter_points)
+    elif char == 70:#F
+        counter_points = 0
+        points = []
+        result =  bresenham(0,1,0,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+                
+        result =  bresenham(2,1,2,3, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        
+        result =  bresenham(0,0,4,0, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        points2pixel(letter,points,counter_points)
+    elif char == 71:#G
+        counter_points = 0
+        points = []
+        result =  bresenham(0,1,0,4, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+                
+        result =  bresenham(1,0,3,0, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        
+        
+        result =  bresenham(0,0,4,0, counter_points)
+        points += result[0]
+        counter_points = result[1]
+        points2pixel(letter,points,counter_points)
+    elif char == 72:#H
         counter_points = 0
         points = []
         # bresenham
         points2pixel(letter,points,counter_points)
-    elif char == 67:
-        counter_points = 0
-        points = []
-        # bresenham
-        points2pixel(letter,points,counter_points)
-    elif char == 68:
-        counter_points = 0
-        points = []
-        # bresenham
-        points2pixel(letter,points,counter_points)
-    elif char == 69:
-        counter_points = 0
-        points = []
-        # bresenham
-        points2pixel(letter,points,counter_points)
-    elif char == 70:
-        counter_points = 0
-        points = []
-        # bresenham
-        points2pixel(letter,points,counter_points)
-    elif char == 71:
-        counter_points = 0
-        points = []
-        # bresenham
-        points2pixel(letter,points,counter_points)
-    elif char == 72:
-        counter_points = 0
-        points = []
-        # bresenham
-        points2pixel(letter,points,counter_points)
-    elif char == 73:
+    elif char == 73:#I
         counter_points = 0
         points = []
         # bresenham
@@ -228,12 +330,9 @@ if __name__ == "__main__":
     l = [ord(" "),ord(","),ord(".")] + list(range(ord("A"),ord("Z")+1))
     print(f"cases total: {len(l)}")
     
-    letter = generate_letter(ord("A"))
+    letter = generate_letter(ord("G"))
     s = ""
-    for i,pixel in enumerate(letter,1):
-        s += str(pixel) if pixel==1 else str(0)
-        s += "\n" if i%6==0 else " "
-    print(s)
+
 
     
     for i,pixel in enumerate(letter,1):
