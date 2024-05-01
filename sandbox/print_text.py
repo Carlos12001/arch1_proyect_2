@@ -668,7 +668,8 @@ if __name__ == "__main__":
     l = [ord(" "),ord(","),ord(".")] + list(range(ord("A"),ord("Z")+1))
     print(f"cases total: {len(l)}")
     
-    letter = generate_letter("12")
+    letter = generate_letter(ord("A"))
+    
     s = ""
 
 
