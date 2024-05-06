@@ -7,27 +7,37 @@ puntos: .space 200
 
 .section .text
 _start:
-mov r4,#-20
-mov r0, r4
-bl clear_50
+ldr r0, =puntos
+mov r1, r0
+mov r2, #50
+add r3, r2, #4
+str r2, [r0]
+add r0, #4
+bl clear_points
+ldr r12, =puntos
+mov r0, #1
+mov r1, #0
+mov r2, #4
+mov r3, #0
+bl bresenham
 breaking:
 
 // Salir del programa
-mov r0, #0
-mov r7, #1
-swi 0
+b .
+// FUNCTION clear_points
+clear_points:
+sub r0, r0, #4      // Decrement r0 by 4 to point to the last element
+mov r2, #0          // Load the value 0 into r2 to clear the words
 
-// FUNCTION clear_50
-clear_50:
-mov r1, #50         // Load the number of words to clear (50) into R1
-mov r2, #0          // Load the value 0 into R2 to clear the words
-
-for_clear_50:
+for_clear_points:
 str r2, [r0]        // Store the value 0 at the current position
-add r0, r0, #4      // Advance R0 by 4 bytes to point to the next position
-subs r1, r1, #1     // Decrement the counter R1 by 1
-bne for_clear_50            // Jump label if R1 is not zero
-mov pc, lr               // Return from the function
+sub r0, r0, #4      // Decrement r0 by 4 to point to the previous position
+cmp r0, r1          // Compare r0 with r1
+bge for_clear_points // Jump to the 'for_clear_points' label if r0 is greater than or equal to r1
+
+add r0, r0, #4      // Increment r0 by 4 to point to the last cleared position
+mov pc, lr          // Return from the function
+
 
 // FUNCTION bresenham
 bresenham:
@@ -41,7 +51,7 @@ str r8, [sp, #16]  // Almacena r8 en la pila
 str r9, [sp, #12]  // Almacena r9 en la pila
 str r10, [sp, #8]  // Almacena r10 en la pila
 str r11, [sp, #4]  // Almacena r11 en la pila
-ldr r12, =puntos
+
 mov r4, r0
 mov r5, r1
 mov r6, r2
@@ -60,23 +70,28 @@ mov r11, r5 // y = y1
 
 if_x_compare:  // x1 > x2
 cmp r4, r6
-bge else_x_compare 
+ble else_x_compare 
 ldr r4, =0xffffffff // sx = -1
+b end_if_x_compare
 
 else_x_compare:
 mov r4, #0x1 // sx = 1
 
+end_if_x_compare:
+
 if_y_compare:  // y1 > y2
 cmp r5, r7
-bge else_y_compare
+ble else_y_compare
 ldr r5, =0xffffffff // sy = -1
-
+b end_if_y_compare
 else_y_compare:
-mov r5, #01 // sy = -1
+mov r5, #01 // sy = 1
+
+end_if_y_compare:
 
 if_differentials:  // dx > dy
 cmp r8, r9
-bge else_differentials
+ble else_differentials
 asr r0, r8, #0x01  // dx >> 1 === dx/2
 
 while_dx_bigger:  // while (x != x2)
