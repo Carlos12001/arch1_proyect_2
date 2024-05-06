@@ -8,11 +8,10 @@ puntos: .space 200
 .section .text
 _start:
 ldr r0, =puntos
+bl set_pixel    // Usa 36 bytes osea 9 words
+ldr r0, =puntos
 mov r1, r0
-mov r2, #50
-add r3, r2, #4
-str r2, [r0]
-add r0, #4
+add r0, #40    // El puntero queda en la 10 word
 bl clear_points
 ldr r12, =puntos
 mov r0, #1
@@ -23,7 +22,36 @@ bl bresenham
 breaking:
 
 // Salir del programa
-b .
+mov %r0, #0  // return val
+mov %r7, #1   // exit system call magic number   
+swi      #0   // Interupt / syscall
+// b .
+
+
+// FUNCTION set_pixels
+set_pixel:
+sub sp, sp, #12    // Adjust the stack pointer to make space for 3 registers (4 bytes each)
+str lr, [sp, #8]   // Store lr on the stack
+str r2, [sp, #4]   // Store r2 on the stack
+str r1, [sp]       // Store r1 on the stack
+
+mov r1, #255
+mov r2, #0
+
+set_pixel_for:
+strb r1, [r0, r2]  // Store the value of r1 at memory address r0 + r2
+add r2, r2, #1
+cmp r2, #36        // Compare r2 with the immediate value 36
+bne set_pixel_for
+
+ldr r1, [sp]       // Load r1 from the stack
+ldr r2, [sp, #4]   // Load r2 from the stack
+ldr lr, [sp, #8]   // Load lr from the stack
+add sp, sp, #12    // Adjust the stack pointer to release the space used by the registers
+
+mov pc, lr         // Return from the function
+
+
 // FUNCTION clear_points
 clear_points:
 sub r0, r0, #4      // Decrement r0 by 4 to point to the last element
@@ -149,6 +177,17 @@ str r7, [r12]  // save y
 add r12, r12, #0x04
 
 mov r0, r12
+ldr r11, [sp, #4]  // Carga r11 desde la pila
+ldr r10, [sp, #8]  // Carga r10 desde la pila
+ldr r9, [sp, #12]  // Carga r9 desde la pila
+ldr r8, [sp, #16]  // Carga r8 desde la pila
+ldr r7, [sp, #20]  // Carga r7 desde la pila
+ldr r6, [sp, #24]  // Carga r6 desde la pila
+ldr r5, [sp, #28]  // Carga r5 desde la pila
+ldr r4, [sp, #32]  // Carga r4 desde la pila
+ldr lr, [sp, #36]  // Carga lr desde la pila
+add sp, sp, #40  // Ajusta el puntero de pila para liberar el espacio utilizado por los registros
+mov pc, lr
 
 ldr r11, [sp, #4]  // Carga r11 desde la pila
 ldr r10, [sp, #8]  // Carga r10 desde la pila
