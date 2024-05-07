@@ -25,7 +25,10 @@ main_loop:
     b main_loop
 
 end_program:
-    b .
+    // b .
+    mov r0, #0
+    mov r7, #1
+    swi 0
 
 
 
