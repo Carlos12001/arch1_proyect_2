@@ -348,3 +348,6 @@ simulation/*
 !c5_pin_model_dump.txt
 trash
 sandbox/prueba.py
+
+scripts/*.disassembly
+scripts/
