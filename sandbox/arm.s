@@ -1,46 +1,31 @@
 .global _start
 .section .data
-text: .ascii "LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT. AENEAN COMMODO LIGULA EGET DOLOR. AENEAN MASSA. CUM SOCIIS NATOQUE PENATIBUS ET MAGNIS DIS PARTURIENT MONTES, NASCETUR RIDICULUS MUS. DONEC QUAM FELIS, ULTRICIES NEC, PELLENTESQUE EU, PRETIUM QUIS, SEM. NULLA CONSEQUAT MASSA QUIS ENIM. DONEC PEDE JUSTO, FRINGILLA VEL, ALIQUET NEC, VULPUTATE EGET, ARCU. IN ENIM JUSTO, RHONCUS UT, IMPERDIET A, VENENATIS VITAE, JUSTO. NULLAM DICTUM FELIS EU PEDE MOLLIS PRETIUM. INTEGER TINCIDUNT. CRAS DAPIBUS. VIVAMUS ELEMENTUM SEMPER NISI. AENEAN VULPUTATE ELEIFEND TELLUS. AENEAN LEO LIGULA, PORTTITOR EU, CONSEQUAT VITAE, ELEIFEND AC, ENIM. ALIQUAM LOREM ANTE, DAPIBUS IN, VIVERRA QUIS, FEUGIAT A. "
+final: .ascii "LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT. AENEAN COMMODO LIGULA EGET DOLOR. AENEAN MASSA. CUM SOCIIS NATOQUE PENATIBUS ET MAGNIS DIS PARTURIENT MONTES, NASCETUR RIDICULUS MUS. DONEC QUAM FELIS, ULTRICIES NEC, PELLENTESQUE EU, PRETIUM QUIS, SEM. NULLA CONSEQUAT MASSA QUIS ENIM. DONEC PEDE JUSTO, FRINGILLA VEL, ALIQUET NEC, VULPUTATE EGET, ARCU. IN ENIM JUSTO, RHONCUS UT, IMPERDIET A, VENENATIS VITAE, JUSTO. NULLAM DICTUM FELIS EU PEDE MOLLIS PRETIUM. INTEGER TINCIDUNT. CRAS DAPIBUS. VIVAMUS ELEMENTUM SEMPER NISI. AENEAN VULPUTATE ELEIFEND TELLUS. AENEAN LEO LIGULA, PORTTITOR EU, CONSEQUAT VITAE, ELEIFEND AC, ENIM. ALIQUAM LOREM ANTE, DAPIBUS IN, VIVERRA QUIS, FEUGIAT A. $"
 
+text: .ascii " A, A.A $"
 .align 2
 puntos: .space 200
 
 my_data: .space 36000
 
-
-
-
-
-
-
-
-
-
-
 .section .text
 _start:
-  ldr r1, =my_data
-  mov r0, #44 // ,
-  bl generate_letter
-  mov r1, r0
-  mov r0, #65 // A
-  bl generate_letter
-  mov r1, r0
-  mov r0, #32 // space
-  bl generate_letter
-  mov r1, r0
-  mov r0, #46 // .
-  bl generate_letter
+    ldr r1, =my_data
+    ldr r4, =text
 
-  breaking:
+main_loop:
+    ldrb r0, [r4]
+    cmp r0, #36   // se detiene si encuentra el simbolo $
+    beq end_program
 
-  // Salir del programa
-  mov %r0, #0  // return val
-  mov %r7, #1   // exit system call magic number   
-  swi      #0   // Interupt / syscall
-  // b .
+    bl generate_letter
+    mov r1, r0
 
+    add r4, r4, #1
+    b main_loop
 
+end_program:
+    b .
 
 
 
@@ -173,10 +158,6 @@ generate_letter:
 
 
 
-
-
-
-
 // FUNCTION points2pixel
 points2pixel:
   sub sp, sp, #40  // Ajusta el puntero de pila para hacer espacio para 10 registros (4 bytes cada uno)
@@ -194,6 +175,8 @@ points2pixel:
   mov r5, r1          // r5 = points_count
   mov r6, r2          // r6 = points
   mov r7, #0
+  cmp r6, r5
+  beq end_loop_points2pixel
 
   loop_points2pixel:
     ldr r0, [r6]        // Cargar x (word) desde points[i]
@@ -225,8 +208,9 @@ points2pixel:
 
   end_loop_points2pixel:
     add r6, r6, #8      // Avanzar al siguiente par de puntos (x, y)
-	  cmp r6, r5 // Comparar points con points_count
-	  blt loop_points2pixel // Saltar si points < points_count
+	cmp r6, r5 // Comparar points con points_count
+	blt loop_points2pixel // Saltar si points < points_count
+
 
   ldr r11, [sp, #4]  // Carga r11 desde la pila
   ldr r10, [sp, #8]  // Carga r10 desde la pila
@@ -239,7 +223,6 @@ points2pixel:
   ldr lr, [sp, #36]  // Carga lr desde la pila
   add sp, sp, #40  // Ajusta el puntero de pila para liberar el espacio utilizado por los registros
   mov pc, lr
-
 
 
 
@@ -272,6 +255,10 @@ ldr lr, [sp, #8]   // Load lr from the stack
 add sp, sp, #12    // Adjust the stack pointer to release the space used by the registers
 
 mov pc, lr         // Return from the function
+
+
+
+
 
 
 
@@ -405,14 +392,17 @@ ldr lr, [sp, #36]  // Carga lr desde la pila
 add sp, sp, #40  // Ajusta el puntero de pila para liberar el espacio utilizado por los registros
 mov pc, lr
 
-
-
-
-
-
-
-
-
+ldr r11, [sp, #4]  // Carga r11 desde la pila
+ldr r10, [sp, #8]  // Carga r10 desde la pila
+ldr r9, [sp, #12]  // Carga r9 desde la pila
+ldr r8, [sp, #16]  // Carga r8 desde la pila
+ldr r7, [sp, #20]  // Carga r7 desde la pila
+ldr r6, [sp, #24]  // Carga r6 desde la pila
+ldr r5, [sp, #28]  // Carga r5 desde la pila
+ldr r4, [sp, #32]  // Carga r4 desde la pila
+ldr lr, [sp, #36]  // Carga lr desde la pila
+add sp, sp, #40  // Ajusta el puntero de pila para liberar el espacio utilizado por los registros
+mov pc, lr
 
 
 // FUNCTION ABS
@@ -422,13 +412,3 @@ add r2, r0, r1 // r2 = (r0 + r1)
 eor r3, r2, r1 // r3 = r2 ^ r1
 mov r0, r3     
 mov pc, lr        // return
-
-
-
-
-
-
-
-
-
-
