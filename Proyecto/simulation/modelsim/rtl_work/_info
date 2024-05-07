@@ -1,0 +1,323 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/simulation/modelsim
+vadder
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1714877657
+!i10b 1
+!s100 <iWXAnY>HGF84=B2OiKaz1
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I[[LHjaYm<8D6WK4Q;m]iN3
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1684244497
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/adder.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/adder.sv
+!i122 6
+L0 1 8
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1714877657.000000
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/adder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/adder.sv|
+!i113 1
+Z7 o-sv -work work
+Z8 !s92 -sv -work work +incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto
+Z9 tCvgOpt 0
+varm
+R1
+Z10 !s110 1714877656
+!i10b 1
+!s100 Tkbe8kL<0KaV7<MI3AmVm3
+R3
+ITClXSa8BI89N:6;`9L4[00
+R4
+S1
+R0
+w1684245633
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/arm.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/arm.sv
+!i122 0
+L0 1 20
+R5
+r1
+!s85 0
+31
+Z11 !s108 1714877656.000000
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/arm.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/arm.sv|
+!i113 1
+R7
+R8
+R9
+vcondcheck
+R1
+R2
+!i10b 1
+!s100 LK;eQ8:H6K]d76M?H`GTX3
+R3
+IB4:<6LLOD06UT]9@;YZ7A0
+R4
+S1
+R0
+Z12 w1684245644
+Z13 8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/condlogic.sv
+Z14 FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/condlogic.sv
+!i122 3
+L0 24 31
+R5
+r1
+!s85 0
+31
+R11
+Z15 !s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/condlogic.sv|
+Z16 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/condlogic.sv|
+!i113 1
+R7
+R8
+R9
+vcondlogic
+R1
+R2
+!i10b 1
+!s100 HOcU>:`j64;izWioYX]nU3
+R3
+IF263[1SSj4k9jj2BaS>Rh3
+R4
+S1
+R0
+R12
+R13
+R14
+!i122 3
+L0 1 22
+R5
+r1
+!s85 0
+31
+R11
+R15
+R16
+!i113 1
+R7
+R8
+R9
+vcontroller
+R1
+R10
+!i10b 1
+!s100 g`oe2gdK8Ta@k[7=W8KW33
+R3
+I?dHcW=j>5:8oTR=4]HJjn0
+R4
+S1
+R0
+w1684131686
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/controller.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/controller.sv
+!i122 1
+L0 1 23
+R5
+r1
+!s85 0
+31
+R11
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/controller.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/controller.sv|
+!i113 1
+R7
+R8
+R9
+vdatapath
+R1
+R2
+!i10b 1
+!s100 m^3@>]VgK5;QRH<h28hoO2
+R3
+I97bLX;emB@zdanX5[670;2
+R4
+S1
+R0
+w1684245726
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/datapath.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/datapath.sv
+!i122 4
+L0 1 39
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/datapath.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/datapath.sv|
+!i113 1
+R7
+R8
+R9
+vdecoder
+R1
+R10
+!i10b 1
+!s100 Z@e2kV^g71UfOA4WIh6TF3
+R3
+IT9o4eKDR4]ZR[GkDAb^lH0
+R4
+S1
+R0
+w1684131036
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/decoder.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/decoder.sv
+!i122 2
+L0 1 50
+R5
+r1
+!s85 0
+31
+R11
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/decoder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/decoder.sv|
+!i113 1
+R7
+R8
+R9
+vextend
+R1
+R2
+!i10b 1
+!s100 ^1k4lKF_G4;gM2A9GLj[^0
+R3
+Ijz;gm61Sm?7Pz]1zbAnfZ3
+R4
+S1
+R0
+w1684245074
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/extend.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/extend.sv
+!i122 7
+L0 1 18
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/extend.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/extend.sv|
+!i113 1
+R7
+R8
+R9
+vflopenr
+R1
+Z17 !s110 1714877658
+!i10b 1
+!s100 84fLN4mDfWoDD@Koj>O@c0
+R3
+IjYV>ea6j:2G6[ff`K=3jA2
+R4
+S1
+R0
+w1684245547
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/flopenr.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/flopenr.sv
+!i122 10
+Z18 L0 1 12
+R5
+r1
+!s85 0
+31
+Z19 !s108 1714877658.000000
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/flopenr.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/flopenr.sv|
+!i113 1
+R7
+R8
+R9
+vflopr
+R1
+R17
+!i10b 1
+!s100 DQaN:DZ]CoWWjL^3>bZ1>3
+R3
+IgNWSAlP2fMCmBlCH7=7LW2
+R4
+S1
+R0
+w1684245380
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/flopr.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/flopr.sv
+!i122 8
+R18
+R5
+r1
+!s85 0
+31
+R19
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/flopr.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/flopr.sv|
+!i113 1
+R7
+R8
+R9
+vmux2
+R1
+R17
+!i10b 1
+!s100 d=TIG4cHMUb:;hzBo2?LG3
+R3
+I@f^Mdz@NkdcSN<H2CE]za0
+R4
+S1
+R0
+w1684245376
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/mux2.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/mux2.sv
+!i122 9
+L0 1 10
+R5
+r1
+!s85 0
+31
+R19
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/mux2.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/mux2.sv|
+!i113 1
+R7
+R8
+R9
+vregfile
+R1
+R2
+!i10b 1
+!s100 HJoIN3X[BTD_amz26WZPJ1
+R3
+IQRQF0RT5S2Eb6D?kVP<hX0
+R4
+S1
+R0
+w1684245469
+8C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/regfile.sv
+FC:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/regfile.sv
+!i122 5
+L0 1 15
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/regfile.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto|C:/Users/Ignac/Documentos/Git/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023/Proyecto/regfile.sv|
+!i113 1
+R7
+R8
+R9
