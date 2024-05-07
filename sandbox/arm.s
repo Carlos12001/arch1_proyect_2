@@ -7,27 +7,247 @@ puntos: .space 200
 
 my_data: .space 36000
 
+
+
+
+
+
+
+
+
+
+
 .section .text
 _start:
-ldr r0, =puntos
-bl set_pixel    // Usa 36 bytes osea 9 words
-ldr r0, =puntos
-mov r1, r0
-add r0, #40    // El puntero queda en la 10 word
-bl clear_points
-ldr r12, =puntos
-mov r0, #1
-mov r1, #0
-mov r2, #4
-mov r3, #0
-bl bresenham
-breaking:
+  ldr r1, =my_data
+  mov r0, #44 // ,
+  bl generate_letter
+  mov r1, r0
+  mov r0, #65 // A
+  bl generate_letter
+  mov r1, r0
+  mov r0, #32 // space
+  bl generate_letter
+  mov r1, r0
+  mov r0, #46 // .
+  bl generate_letter
 
-// Salir del programa
-mov %r0, #0  // return val
-mov %r7, #1   // exit system call magic number   
-swi      #0   // Interupt / syscall
-// b .
+  breaking:
+
+  // Salir del programa
+  mov %r0, #0  // return val
+  mov %r7, #1   // exit system call magic number   
+  swi      #0   // Interupt / syscall
+  // b .
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTION generate_letter
+// r0: char
+// r1: posicion de memoria de la letra
+generate_letter:
+  sub sp, sp, #40  // Ajusta el puntero de pila para hacer espacio para 10 registros (4 bytes cada uno)
+  str lr, [sp, #36]  // Almacena lr en la pila
+  str r4, [sp, #32]  // Almacena r4 en la pila
+  str r5, [sp, #28]  // Almacena r5 en la pila
+  str r6, [sp, #24]  // Almacena r6 en la pila
+  str r7, [sp, #20]  // Almacena r7 en la pila
+  str r8, [sp, #16]  // Almacena r8 en la pila
+  str r9, [sp, #12]  // Almacena r9 en la pila
+  str r10, [sp, #8]  // Almacena r10 en la pila
+  str r11, [sp, #4]  // Almacena r11 en la pila
+
+
+
+  // Inicializar la lista 'letter' con 255
+  mov r4, r0
+  mov r5, r1
+  mov r0, r5
+  bl set_pixel    // Usa 36 bytes osea 9 words
+  ldr r12, =puntos
+
+  // Switch CASE
+  cmp r4, #32
+  beq case_space
+  
+  // 44 (coma) ;
+  cmp r4, #44
+  beq case_comma
+
+  // 46 (punto) .
+  cmp r4, #46
+  beq case_punto
+
+  // 65 A
+  cmp r4, #65
+  beq case_a
+
+  // Case Default
+  b case_default
+    
+  case_space:
+    b end_generate_letter
+
+  case_comma:
+    mov r0, #4
+    mov r1, #1
+    mov r2, #3
+    mov r3, #2
+    bl bresenham        
+    
+    b end_generate_letter
+
+  case_punto:
+    mov r0, #3
+    mov r1, #2
+    mov r2, #3
+    mov r3, #2
+    bl bresenham
+    
+    b end_generate_letter
+
+  case_a:
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #4
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #3
+    mov r1, #1
+    mov r2, #3
+    mov r3, #3
+    bl bresenham
+
+    b end_generate_letter
+
+
+  case_default:
+    b end_generate_letter
+      
+  end_generate_letter:
+
+  mov r0, r5
+  mov r1, r12
+  ldr r2, =puntos
+  bl points2pixel
+  add r0, r5, #36
+
+
+  ldr r11, [sp, #4]  // Carga r11 desde la pila
+  ldr r10, [sp, #8]  // Carga r10 desde la pila
+  ldr r9, [sp, #12]  // Carga r9 desde la pila
+  ldr r8, [sp, #16]  // Carga r8 desde la pila
+  ldr r7, [sp, #20]  // Carga r7 desde la pila
+  ldr r6, [sp, #24]  // Carga r6 desde la pila
+  ldr r5, [sp, #28]  // Carga r5 desde la pila
+  ldr r4, [sp, #32]  // Carga r4 desde la pila
+  ldr lr, [sp, #36]  // Carga lr desde la pila
+  add sp, sp, #40  // Ajusta el puntero de pila para liberar el espacio utilizado por los registros
+  mov pc, lr
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTION points2pixel
+points2pixel:
+  sub sp, sp, #40  // Ajusta el puntero de pila para hacer espacio para 10 registros (4 bytes cada uno)
+  str lr, [sp, #36]  // Almacena lr en la pila
+  str r4, [sp, #32]  // Almacena r4 en la pila
+  str r5, [sp, #28]  // Almacena r5 en la pila
+  str r6, [sp, #24]  // Almacena r6 en la pila
+  str r7, [sp, #20]  // Almacena r7 en la pila
+  str r8, [sp, #16]  // Almacena r8 en la pila
+  str r9, [sp, #12]  // Almacena r9 en la pila
+  str r10, [sp, #8]  // Almacena r10 en la pila
+  str r11, [sp, #4]  // Almacena r11 en la pila
+
+  mov r4, r0          // r4 = letter
+  mov r5, r1          // r5 = points_count
+  mov r6, r2          // r6 = points
+  mov r7, #0
+
+  loop_points2pixel:
+    ldr r0, [r6]        // Cargar x (word) desde points[i]
+    ldr r1, [r6, #4]    // Cargar y (word) desde points[i+1]
+
+    cmp r0, #0          // Comparar x con 0
+    beq store_y         // Si x == 0, saltar a store_y
+
+    cmp r0, #1          // Comparar x con 1
+    addeq r1, r1, #6    // Si x == 1, sumar 6 a y
+    beq store_y         // Saltar a store_y
+
+    cmp r0, #2          // Comparar x con 2
+    addeq r1, r1, #12   // Si x == 2, sumar 12 a y
+    beq store_y         // Saltar a store_y
+
+    cmp r0, #3          // Comparar x con 3
+    addeq r1, r1, #18   // Si x == 3, sumar 18 a y
+    beq store_y         // Saltar a store_y
+
+    cmp r0, #4          // Comparar x con 4
+    addeq r1, r1, #24   // Si x == 4, sumar 24 a y
+    beq store_y         // Saltar a store_y
+
+    b end_loop_points2pixel          // Si x no es válido, saltar al final del bucle
+
+  store_y:
+    strb r7, [r4, r1]   // Almacenar 1 en letter[y] (byte)
+
+  end_loop_points2pixel:
+    add r6, r6, #8      // Avanzar al siguiente par de puntos (x, y)
+	  cmp r6, r5 // Comparar points con points_count
+	  blt loop_points2pixel // Saltar si points < points_count
+
+  ldr r11, [sp, #4]  // Carga r11 desde la pila
+  ldr r10, [sp, #8]  // Carga r10 desde la pila
+  ldr r9, [sp, #12]  // Carga r9 desde la pila
+  ldr r8, [sp, #16]  // Carga r8 desde la pila
+  ldr r7, [sp, #20]  // Carga r7 desde la pila
+  ldr r6, [sp, #24]  // Carga r6 desde la pila
+  ldr r5, [sp, #28]  // Carga r5 desde la pila
+  ldr r4, [sp, #32]  // Carga r4 desde la pila
+  ldr lr, [sp, #36]  // Carga lr desde la pila
+  add sp, sp, #40  // Ajusta el puntero de pila para liberar el espacio utilizado por los registros
+  mov pc, lr
+
+
+
+
+
+
+
+
+
 
 
 // FUNCTION set_pixels
@@ -54,19 +274,13 @@ add sp, sp, #12    // Adjust the stack pointer to release the space used by the 
 mov pc, lr         // Return from the function
 
 
-// FUNCTION clear_points
-clear_points:
-sub r0, r0, #4      // Decrement r0 by 4 to point to the last element
-mov r2, #0          // Load the value 0 into r2 to clear the words
 
-for_clear_points:
-str r2, [r0]        // Store the value 0 at the current position
-sub r0, r0, #4      // Decrement r0 by 4 to point to the previous position
-cmp r0, r1          // Compare r0 with r1
-bge for_clear_points // Jump to the 'for_clear_points' label if r0 is greater than or equal to r1
 
-add r0, r0, #4      // Increment r0 by 4 to point to the last cleared position
-mov pc, lr          // Return from the function
+
+
+
+
+
 
 
 // FUNCTION bresenham
@@ -191,17 +405,14 @@ ldr lr, [sp, #36]  // Carga lr desde la pila
 add sp, sp, #40  // Ajusta el puntero de pila para liberar el espacio utilizado por los registros
 mov pc, lr
 
-ldr r11, [sp, #4]  // Carga r11 desde la pila
-ldr r10, [sp, #8]  // Carga r10 desde la pila
-ldr r9, [sp, #12]  // Carga r9 desde la pila
-ldr r8, [sp, #16]  // Carga r8 desde la pila
-ldr r7, [sp, #20]  // Carga r7 desde la pila
-ldr r6, [sp, #24]  // Carga r6 desde la pila
-ldr r5, [sp, #28]  // Carga r5 desde la pila
-ldr r4, [sp, #32]  // Carga r4 desde la pila
-ldr lr, [sp, #36]  // Carga lr desde la pila
-add sp, sp, #40  // Ajusta el puntero de pila para liberar el espacio utilizado por los registros
-mov pc, lr
+
+
+
+
+
+
+
+
 
 
 // FUNCTION ABS
@@ -211,3 +422,13 @@ add r2, r0, r1 // r2 = (r0 + r1)
 eor r3, r2, r1 // r3 = r2 ^ r1
 mov r0, r3     
 mov pc, lr        // return
+
+
+
+
+
+
+
+
+
+

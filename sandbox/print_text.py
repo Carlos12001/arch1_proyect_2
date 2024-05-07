@@ -38,26 +38,26 @@ def points2pixel(letter,points,points_count):
         x = points[i][0]
         y = points[i][1]
         if x == 0:
-            letter[y] = 1
+            letter[y] = 0
         elif x == 1:
-            letter[y+6] = 1
+            letter[y+6] = 0
         elif x == 2:
-            letter[y+12] = 1
+            letter[y+12] = 0
         elif x == 3:
-            letter[y+18] = 1
+            letter[y+18] = 0
         elif x == 4:
-            letter[y+24] = 1
+            letter[y+24] = 0
         else:
             return
 
 def generate_letter(char):
     letter = [
-                0,0,0,0,0,0,
-                0,0,0,0,0,0,
-                0,0,0,0,0,0,
-                0,0,0,0,0,0,
-                0,0,0,0,0,0,
-                0,0,0,0,0,0
+                0xff,0xff,0xff,0xff,0xff,0xff,
+                0xff,0xff,0xff,0xff,0xff,0xff,
+                0xff,0xff,0xff,0xff,0xff,0xff,
+                0xff,0xff,0xff,0xff,0xff,0xff,
+                0xff,0xff,0xff,0xff,0xff,0xff,
+                0xff,0xff,0xff,0xff,0xff,0xff
                 ]
     if char == 32: # SPACE
         counter_points = 0
@@ -666,15 +666,20 @@ def generate_letter(char):
 
 if __name__ == "__main__":
     l = [ord(" "),ord(","),ord(".")] + list(range(ord("A"),ord("Z")+1))
-    print(f"cases total: {len(l)}")
+    # print(f"cases total: {len(l)}")
     
     letter = generate_letter(ord("A"))
     
     s = ""
-
-
-    
     for i,pixel in enumerate(letter,1):
-        s += str(pixel) if pixel==1 else " "
+        s += str(pixel) if pixel==0 else " "
         s += "\n" if i%6==0 else " "
     print(s)
+    
+    s = ""
+    for i,pixel in enumerate(letter,1):
+        s += str(pixel) if pixel==0 else "ff"
+        s += "\n" if i%4==0 else "\t"
+    print(s)
+
+   
