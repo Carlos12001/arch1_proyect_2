@@ -78,6 +78,107 @@ generate_letter:
   cmp r4, #65
   beq case_a
 
+    // 66 B
+  cmp r4, #66
+  beq case_b
+
+  // 67 C
+  cmp r4, #67
+  beq case_c
+
+  // 68 D
+  cmp r4, #68
+  beq case_d
+
+  // 69 E
+  cmp r4, #69
+  beq case_e
+
+    // 70 F
+  cmp r4, #70
+  beq case_f
+
+    // 71 G
+  cmp r4, #71
+  beq case_d
+
+    // 72 H
+  cmp r4, #72
+  beq case_d
+
+    // 73 I
+  cmp r4, #73
+  beq case_d
+
+
+    // 74 J
+  cmp r4, #74
+  beq case_d
+
+    // 75 K
+  cmp r4, #75
+  beq case_d
+
+    // 76 L
+  cmp r4, #76
+  beq case_d
+
+    // 77 M
+  cmp r4, #77
+  beq case_d
+
+      // 78 N
+  cmp r4, #78
+  beq case_d
+
+      // 79 O
+  cmp r4, #79
+  beq case_d
+
+      // 80 P
+  cmp r4, #80
+  beq case_d
+
+      // 81 Q
+  cmp r4, #81
+  beq case_d
+
+  // 82 R
+  cmp r4, #82
+  beq case_d
+
+  // 83 s
+  cmp r4, #83
+  beq case_d
+
+    // 84 t
+  cmp r4, #84
+  beq case_d
+
+  // 85 U
+  cmp r4, #85
+  beq case_d
+  
+  // 86 v
+  cmp r4, #86
+  beq case_d
+
+  // 87 w
+  cmp r4, #87
+  beq case_d
+
+    // 88 x
+  cmp r4, #88
+  beq case_d
+
+  // 89 y
+  cmp r4, #89
+  beq case_d
+
+    // 90 z
+  cmp r4, #90
+  beq case_d
+
   // Case Default
   b case_default
     
@@ -129,6 +230,749 @@ generate_letter:
     bl bresenham
 
     b end_generate_letter
+
+  case_b:
+
+    mov r0, #1
+    mov r1, #4
+    mov r2, #1
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #3
+    mov r1, #4
+    mov r2, #3
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #1
+    mov r2, #2
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    b end_generate_letter
+  
+
+  case_c:
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    b end_generate_letter
+
+  case_d:
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #4
+    mov r2, #3
+    mov r3, #3
+    bl bresenham
+
+    b end_generate_letter
+
+  case_e:
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #1
+    mov r2, #2
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    b end_generate_letter
+
+  case_f:
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #1
+    mov r2, #2
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+
+
+    b end_generate_letter
+
+  case_g:
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #0
+    mov r2, #3
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #2
+    mov r2, #2
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #3
+    mov r1, #4
+    mov r2, #3
+    mov r3, #4
+    bl bresenham
+
+    b end_generate_letter
+
+
+  case_h:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #1
+    mov r2, #2
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #4
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+
+    b end_generate_letter  
+
+  case_i:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #2
+    mov r2, #3
+    mov r3, #2
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #0
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+
+    b end_generate_letter 
+
+  case_j:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #4
+    mov r2, #3
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #3
+    mov r1, #0
+    mov r2, #3
+    mov r3, #0
+    bl bresenham
+
+
+    b end_generate_letter 
+
+  case_k:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #1
+    mov r2, #2
+    mov r3, #1
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #3
+    mov r2, #1
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #4
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #3
+    mov r1, #3
+    mov r2, #3
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #4
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+
+    b end_generate_letter 
+
+  case_l:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    b end_generate_letter 
+
+  case_m:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #4
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #1
+    mov r2, #1
+    mov r3, #1
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #2
+    mov r2, #2
+    mov r3, #2
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #3
+    mov r2, #1
+    mov r3, #3
+    bl bresenham
+
+
+    b end_generate_letter 
+
+
+  case_n:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #4
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #1
+    mov r2, #1
+    mov r3, #1
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #2
+    mov r2, #2
+    mov r3, #2
+    bl bresenham
+
+    mov r0, #3
+    mov r1, #3
+    mov r2, #3
+    mov r3, #3
+    bl bresenham
+
+
+    b end_generate_letter 
+
+
+  case_o:
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #0
+    mov r2, #3
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #4
+    mov r2, #3
+    mov r3, #4
+    bl bresenham
+
+
+
+    b end_generate_letter 
+
+
+  case_p:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #1
+    mov r2, #2
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #4
+    mov r2, #1
+    mov r3, #4
+    bl bresenham
+
+
+
+    b end_generate_letter 
+
+  case_q:
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #0
+    mov r2, #3
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #4
+    mov r2, #2
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #2
+    bl bresenham
+
+    mov r0, #3
+    mov r1, #3
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+
+
+    b end_generate_letter 
+
+
+  case_r:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #1
+    mov r2, #2
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #4
+    mov r2, #1
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #3
+    mov r1, #3
+    mov r2, #3
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #4
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    b end_generate_letter 
+
+
+  case_s:
+
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #2
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #1
+    mov r2, #2
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #4
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #0
+    mov r2, #4
+    mov r3, #3
+    bl bresenham
+
+
+    b end_generate_letter 
+
+
+  case_t:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #2
+    mov r2, #4
+    mov r3, #2
+    bl bresenham
+
+    b end_generate_letter 
+
+
+  case_u:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #3
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #4
+    mov r2, #3
+    mov r3, #4
+    bl bresenham
+
+    b end_generate_letter 
+
+
+  case_v:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #1
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #1
+    mov r2, #3
+    mov r3, #1
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #2
+    mov r2, #4
+    mov r3, #2
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #4
+    mov r2, #1
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #3
+    mov r2, #3
+    mov r3, #3
+    bl bresenham
+
+    b end_generate_letter 
+
+
+
+  case_w:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #3
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #2
+    mov r2, #3
+    mov r3, #2
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #4
+    mov r2, #3
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #3
+    bl bresenham
+
+    b end_generate_letter 
+
+
+  case_x:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #0
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    b end_generate_letter 
+
+  case_y:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #1
+    mov r3, #1
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #3
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #2
+    mov r2, #4
+    mov r3, #2
+    bl bresenham
+
+    b end_generate_letter 
+
+  case_z:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #0 
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #1
+    mov r3, #1
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #3
+    mov r2, #0
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #2
+    mov r2, #4
+    mov r3, #2
+    bl bresenham
+
+    b end_generate_letter 
+
+
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #3
+    mov r1, #1
+    mov r2, #1
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #0
+    mov r2, #4
+    mov r3, #4
+    bl bresenham
+
+    b end_generate_letter 
+
+
+
 
 
   case_default:

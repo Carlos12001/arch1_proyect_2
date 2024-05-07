@@ -162,6 +162,8 @@ def generate_letter(char):
         
         
         points2pixel(letter,points,counter_points)
+        
+        
     elif char == 68:#D
         counter_points = 0
         points = []
@@ -226,6 +228,7 @@ def generate_letter(char):
     elif char == 71:#G
         counter_points = 0
         points = []
+        
         result =  bresenham(0,1,0,4, counter_points)
         points += result[0]
         counter_points = result[1]
@@ -248,6 +251,7 @@ def generate_letter(char):
         points += result[0]
         counter_points = result[1]
         points2pixel(letter,points,counter_points)
+        
     elif char == 72:#H
         counter_points = 0
         points = []
@@ -347,6 +351,8 @@ def generate_letter(char):
         points += result[0]
         counter_points = result[1]
         points2pixel(letter,points,counter_points)
+        
+     
     elif char == 77:#M
         counter_points = 0
         points = []
