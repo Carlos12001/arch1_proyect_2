@@ -611,7 +611,6 @@ generate_letter:
 
     b end_generate_letter 
 
-x21780: 0x21780:	0	0	0	0	
   case_o:
 
     mov r0, #0
@@ -1209,7 +1208,7 @@ end_while_dx_bigger:
 b end_if_differentials
 
 else_differentials:
-lsr r0, r9, #0x01  // dy >> 1 === dy/2
+asr r0, r9, #0x01  // dy >> 1 === dy/2
 
 while_dy_bigger:  // while (y != y2)
 cmp r11, r7
