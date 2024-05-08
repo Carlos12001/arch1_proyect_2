@@ -1,6 +1,6 @@
 define view_my_data
-    set $start = 0x000207e0
-    set $count = 48
+    set $start = 0x00021174
+    set $count = 400
     while $count > 0
         printf "0x%x: ", $start
         x/6b $start

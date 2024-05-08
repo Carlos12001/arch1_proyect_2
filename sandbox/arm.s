@@ -2,7 +2,7 @@
 .section .data
 final: .ascii "LOREM IPSUM DOLOR SIT AMET, CONSECTETUER ADIPISCING ELIT. AENEAN COMMODO LIGULA EGET DOLOR. AENEAN MASSA. CUM SOCIIS NATOQUE PENATIBUS ET MAGNIS DIS PARTURIENT MONTES, NASCETUR RIDICULUS MUS. DONEC QUAM FELIS, ULTRICIES NEC, PELLENTESQUE EU, PRETIUM QUIS, SEM. NULLA CONSEQUAT MASSA QUIS ENIM. DONEC PEDE JUSTO, FRINGILLA VEL, ALIQUET NEC, VULPUTATE EGET, ARCU. IN ENIM JUSTO, RHONCUS UT, IMPERDIET A, VENENATIS VITAE, JUSTO. NULLAM DICTUM FELIS EU PEDE MOLLIS PRETIUM. INTEGER TINCIDUNT. CRAS DAPIBUS. VIVAMUS ELEMENTUM SEMPER NISI. AENEAN VULPUTATE ELEIFEND TELLUS. AENEAN LEO LIGULA, PORTTITOR EU, CONSEQUAT VITAE, ELEIFEND AC, ENIM. ALIQUAM LOREM ANTE, DAPIBUS IN, VIVERRA QUIS, FEUGIAT A. $"
 
-text: .ascii " A, A.A $"
+text: .ascii " , . A B C D E F G H I J K L M N O P Q R S T U V W X Y Z $"
 .align 2
 puntos: .space 200
 
@@ -78,7 +78,7 @@ generate_letter:
   cmp r4, #65
   beq case_a
 
-    // 66 B
+  // 66 B
   cmp r4, #66
   beq case_b
 
@@ -94,90 +94,89 @@ generate_letter:
   cmp r4, #69
   beq case_e
 
-    // 70 F
+  // 70 F
   cmp r4, #70
   beq case_f
 
-    // 71 G
+  // 71 G
   cmp r4, #71
-  beq case_d
+  beq case_g
 
-    // 72 H
+  // 72 H
   cmp r4, #72
-  beq case_d
+  beq case_h
 
-    // 73 I
+  // 73 I
   cmp r4, #73
-  beq case_d
+  beq case_i
 
-
-    // 74 J
+  // 74 J
   cmp r4, #74
-  beq case_d
+  beq case_j
 
-    // 75 K
+  // 75 K
   cmp r4, #75
-  beq case_d
+  beq case_k
 
-    // 76 L
+  // 76 L
   cmp r4, #76
-  beq case_d
+  beq case_l
 
-    // 77 M
+  // 77 M
   cmp r4, #77
-  beq case_d
+  beq case_m
 
-      // 78 N
+  // 78 N
   cmp r4, #78
-  beq case_d
+  beq case_n
 
-      // 79 O
+  // 79 O
   cmp r4, #79
-  beq case_d
+  beq case_o
 
-      // 80 P
+  // 80 P
   cmp r4, #80
-  beq case_d
+  beq case_p
 
-      // 81 Q
+  // 81 Q
   cmp r4, #81
-  beq case_d
+  beq case_q
 
   // 82 R
   cmp r4, #82
-  beq case_d
+  beq case_r
 
-  // 83 s
+  // 83 S
   cmp r4, #83
-  beq case_d
+  beq case_s
 
-    // 84 t
+  // 84 T
   cmp r4, #84
-  beq case_d
+  beq case_t
 
   // 85 U
   cmp r4, #85
-  beq case_d
+  beq case_u
   
   // 86 v
   cmp r4, #86
-  beq case_d
+  beq case_v
 
   // 87 w
   cmp r4, #87
-  beq case_d
+  beq case_w
 
-    // 88 x
+  // 88 x
   cmp r4, #88
-  beq case_d
+  beq case_x
 
   // 89 y
   cmp r4, #89
-  beq case_d
+  beq case_y
 
-    // 90 z
+  // 90 z
   cmp r4, #90
-  beq case_d
+  beq case_z
 
   // Case Default
   b case_default
@@ -436,8 +435,8 @@ generate_letter:
 
     mov r0, #0
     mov r1, #0
-    mov r2, #4
-    mov r3, #0
+    mov r2, #0
+    mov r3, #4
     bl bresenham
 
     mov r0, #1
@@ -469,6 +468,12 @@ generate_letter:
     mov r3, #4
     bl bresenham
 
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4
+    mov r3, #3
+    bl bresenham
+
     mov r0, #3
     mov r1, #0
     mov r2, #3
@@ -489,7 +494,7 @@ generate_letter:
     mov r0, #2
     mov r1, #1
     mov r2, #2
-    mov r3, #1
+    mov r3, #2
     bl bresenham
 
     mov r0, #1
@@ -606,7 +611,7 @@ generate_letter:
 
     b end_generate_letter 
 
-
+x21780: 0x21780:	0	0	0	0	
   case_o:
 
     mov r0, #0
@@ -933,30 +938,6 @@ generate_letter:
     mov r3, #4
     bl bresenham
 
-    mov r0, #0
-    mov r1, #0
-    mov r2, #1
-    mov r3, #1
-    bl bresenham
-
-    mov r0, #1
-    mov r1, #3
-    mov r2, #0
-    mov r3, #4
-    bl bresenham
-
-    mov r0, #2
-    mov r1, #2
-    mov r2, #4
-    mov r3, #2
-    bl bresenham
-
-    b end_generate_letter 
-
-
-    mov r3, #4
-    bl bresenham
-
     mov r0, #3
     mov r1, #1
     mov r2, #1
@@ -971,11 +952,44 @@ generate_letter:
 
     b end_generate_letter 
 
-
-
-
-
   case_default:
+
+    mov r0, #0
+    mov r1, #0
+    mov r2, #4 
+    mov r3, #0
+    bl bresenham
+
+    mov r0, #4
+    mov r1, #1
+    mov r2, #4 
+    mov r3, #4
+    bl bresenham
+    
+    mov r0, #0
+    mov r1, #1
+    mov r2, #0 
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #3
+    mov r2, #3
+    mov r3, #3
+    bl bresenham
+
+    mov r0, #1
+    mov r1, #4
+    mov r2, #3
+    mov r3, #4
+    bl bresenham
+
+    mov r0, #2
+    mov r1, #2
+    mov r2, #2
+    mov r3, #2
+    bl bresenham
+
     b end_generate_letter
       
   end_generate_letter:
