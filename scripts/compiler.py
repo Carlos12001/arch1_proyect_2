@@ -1,4 +1,66 @@
 
+specific_labels = {
+    "_start",
+    "main_loop",
+    "generate_letter",
+    "case_space",
+    "case_comma",
+    "case_punto",
+    "case_a",
+    "case_b",
+    "case_c",
+    "case_d",
+    "case_e",
+    "case_f",
+    "case_g",
+    "case_h",
+    "case_i",
+    "case_j",
+    "case_k",
+    "case_l",
+    "case_m",
+    "case_n",
+    "case_o",
+    "case_p",
+    "case_q",
+    "case_r",
+    "case_s",
+    "case_t",
+    "case_u",
+    "case_v",
+    "case_w",
+    "case_x",
+    "case_y",
+    "case_z",
+    "set_pixel",
+    "set_pixel_for",
+    
+    
+    "bresenham",
+    
+    "if_x_compare",
+    "else_x_compare",
+    "end_if_x_compare",
+    "if_y_compare",
+    "else_y_compare",
+    "end_if_y_compare",
+    "if_differentials",
+    "while_dx_bigger",
+    "if_while_dx_bigger",
+    "end_if_while_dx_bigger",
+    "end_while_dx_bigger",
+    "else_differentials",
+    "while_dy_bigger",
+    "if_while_dy_bigger",
+    "end_if_while_dy_bigger",
+    "end_while_dy_bigger",
+    "end_if_differentials",
+    "abs"
+}
+
+
+
+
 
 # diccionario de registros
 registers = {
@@ -72,10 +134,36 @@ address = {
 
 # labels
 labels = {
+ 
 }
 
 
-labels = dict()
+def count_instruction(stripped_line):
+    """
+    Función auxiliar para determinar el tamaño de cada instrucción.
+    No se jaja, a cada instrucción se le da :) mmm 4 bytes.
+    """
+    return 4
+
+
+def identify_specific_labels(raw_txt):
+    """Identifica etiquetas con su posición de memoria correspondiente"""
+    memory_counter = 0x00
+    for line in raw_txt:
+        stripped_line = line.strip()
+        if not stripped_line or stripped_line.startswith("#"):
+            continue
+        # Separa la primera palabra (instrucción o etiqueta)
+        first_word = stripped_line.split(",")[0].split()[0]
+        # Si es una etiqueta específica
+        if stripped_line.endswith(":") and first_word.replace(":", "") in specific_labels:
+            label_name = first_word.replace(":", "")
+            labels[label_name] = memory_counter
+        else:
+            memory_counter += count_instruction(stripped_line)
+    return labels
+
+
 # Leer el archivo y limpia los saltos de linea
 def read_txt(path):
     with open(path, "r") as file:
@@ -146,29 +234,24 @@ def compileLine(line:str):
 def getLabels():
     pass
 
-def mainCompileR():
-    lineCounter = 0
-    rawTxt = open("./arm.txt", "r").readlines()
+def checkImmLabel(label, memoryAddress, labels):
+    labelName = label.strip().replace(":", "")
+    labels[labelName] = memoryAddress
+    
+def main():
+   
+    file_path = "C:/Users/Felipe vargas/Downloads/arch1_proyect_2-1/scripts/arm.txt"
+    with open(file_path, "r") as file:
+        raw_txt = file.readlines()
 
-    # Loop para identificar labels
-    for line in rawTxt:
+    # Identifica las etiquetas específicas
+    identify_specific_labels(raw_txt)
 
-        instrc = line.rsplit(" ")
-        
-        if len(instrc) == 1 and instrc[0] != "NP":
-            checkImmLabel(line, lineCounter)
-        lineCounter = lineCounter + 1
-    print(lineCounter)
-
-
-
-    # Loop para compilar instrucciones 
-    # data_intrucctionsList = []
-    # for line in rawTxt:
-    #     binLine = compileLine(line)
-    #     if binLine != None:
-    #         data_intrucctionsList.append(binLine)
-    # return data_intrucctionsList
+    # Imprime las etiquetas y su dirección
+    print("labels = {")
+    for label, address in sorted(labels.items(), key=lambda x: x[1]):
+        print(f'    "{label}": 0x{address:02X},')
+    print("}")
 
 if __name__ == "__main__":
-    mainCompileR()
+    main()
