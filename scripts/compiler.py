@@ -97,28 +97,28 @@ cond = {
 
 # data processing intrucctions
 data_intrucctions = {
-    "add": "1000",
-    "cmp": "1010",
-    "mov": "1101",
-    "sub": "0010",
-    "asr": "1101",
-    "eor": "0001",
-    "mvn": "1111",
+    "sum": "1000",
+    "com": "1010",
+    "set": "1101",
+    "dec": "0010",
+    "divi": "1101",
+    "xor": "0001",
+    "aset": "1111",
 
 }
 
 # memory intrucctions
 memory_intrucctions = {
-    "str": "0100",
-    "ldr": "0101",
-    "strb": "0110",
-    "ldrb": "0111"
+    "str": "100",
+    "ldr": "101",
+    "strb": "110",
+    "ldrb": "111"
 }
 
 # branch intrucctions
 branch_intrucctions = {
-    "b": "10",
-    "bl": "11"
+    "b": "0",
+    "bl": "1"
 }
 
 # special instrucctions
@@ -129,9 +129,9 @@ special_intrucctions = {
 
 # address values
 address = {
-    "text": "0000",
-    "puntos": "0001",
-    "my_data": "0010",
+    "text":     0x000,
+    "puntos":   0x400,
+    "my_data":  0x800,
 }
 
 
