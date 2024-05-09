@@ -7,6 +7,7 @@ specific_labels = {
     "case_space",
     "case_comma",
     "case_punto",
+  
     "case_a",
     "case_b",
     "case_c",
@@ -36,7 +37,8 @@ specific_labels = {
     "set_pixel",
     "set_pixel_for",
     
-    
+    "store_y",
+    "end_loop_points2pixel",
     "bresenham",
     
     "if_x_compare",
