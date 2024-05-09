@@ -1,66 +1,4 @@
 
-specific_labels = {
-    "_start",
-    "main_loop",
-    "generate_letter",
-    "end_program",
-    "case_space",
-    "case_comma",
-    "case_punto",
-  
-    "case_a",
-    "case_b",
-    "case_c",
-    "case_d",
-    "case_e",
-    "case_f",
-    "case_g",
-    "case_h",
-    "case_i",
-    "case_j",
-    "case_k",
-    "case_l",
-    "case_m",
-    "case_n",
-    "case_o",
-    "case_p",
-    "case_q",
-    "case_r",
-    "case_s",
-    "case_t",
-    "case_u",
-    "case_v",
-    "case_w",
-    "case_x",
-    "case_y",
-    "case_z",
-    "set_pixel",
-    "set_pixel_for",
-    
-    "store_y",
-    "end_loop_points2pixel",
-    "bresenham",
-    
-    "if_x_compare",
-    "else_x_compare",
-    "end_if_x_compare",
-    "if_y_compare",
-    "else_y_compare",
-    "end_if_y_compare",
-    "if_differentials",
-    "while_dx_bigger",
-    "if_while_dx_bigger",
-    "end_if_while_dx_bigger",
-    "end_while_dx_bigger",
-    "else_differentials",
-    "while_dy_bigger",
-    "if_while_dy_bigger",
-    "end_if_while_dy_bigger",
-    "end_while_dy_bigger",
-    "end_if_differentials",
-    "abs"
-}
-
 
 
 
@@ -109,10 +47,10 @@ data_intrucctions = {
 
 # memory intrucctions
 memory_intrucctions = {
-    "str": "100",
-    "ldr": "101",
-    "strb": "110",
-    "ldrb": "111"
+    "stw": "00",
+    "ldw": "01",
+    "savepix": "10",
+    "letter": "11"
 }
 
 # branch intrucctions
@@ -135,126 +73,79 @@ address = {
 }
 
 
-# labels
-labels = {
- 
-}
+def identify_specific_labels_and_instructions(file_path):
+    # Inicializa las variables
+    labels = {}
+    instructions = []
+    address = 0
 
+    # Lee el archivo línea por línea
+    with open(file_path, 'r') as asm_file:
+        for line in asm_file:
+            line = line.strip()
+            # Ignora líneas en blanco
+            if not line:
+                continue
 
-def count_instruction(stripped_line):
-    """
-    Función auxiliar para determinar el tamaño de cada instrucción.
-    No se jaja, a cada instrucción se le da :) mmm 4 bytes.
-    """
-    return 4
+            # Si es un label (termina con ":")
+            if line.endswith(':'):
+                label = line[:-1]
+                labels[label] = address
+            else:
+                # Si es una instrucción, agrégala y aumenta la dirección
+                instructions.append(line)
+                address += 4
 
+    return labels, instructions
 
-def identify_specific_labels(raw_txt):
-    """Identifica etiquetas con su posición de memoria correspondiente"""
-    memory_counter = 0x00
-    for line in raw_txt:
-        stripped_line = line.strip()
-        if not stripped_line or stripped_line.startswith("#"):
-            continue
-        # Separa la primera palabra (instrucción o etiqueta)
-        first_word = stripped_line.split(",")[0].split()[0]
-        # Si es una etiqueta específica
-        if stripped_line.endswith(":") and first_word.replace(":", "") in specific_labels:
-            label_name = first_word.replace(":", "")
-            labels[label_name] = memory_counter
-        else:
-            memory_counter += count_instruction(stripped_line)
-    return labels
+def write_output(output_path, labels, instructions):
+    # Escribe las instrucciones sin los labels en el archivo de salida
+    with open(output_path, 'w') as output_file:
+        for instruction in instructions:
+            output_file.write(f'{instruction}\n')
 
+    # Opción: muestra los labels en la consola
+    print("Labels encontrados:")
+    for label, address in labels.items():
+        print(f'{label}: {address:08x}')
 
-# Leer el archivo y limpia los saltos de linea
-def read_txt(path):
-    with open(path, "r") as file:
-        rawInstrc = [line.rstrip("\n").replace(",", "") for line in file]
-    return rawInstrc
 
 # revisa si existe el registro en el diccionario
 def translateReg(reg):
-    if reg not in registers:
-        print(f"Error: {reg} no es un registo valido")
-        exit()
-    else:
-        return registers[reg]
-
+    pass
 # revisa si existe la instruccion en el diccionario
 def translateLabel(strLabel):
-    if strLabel not in labels:
-        print(f"Error: {strLabel} no es un label valido")
-        exit()
-    else:
-        return labels[strLabel]
+    pass
 
 # revisa si existe el label en el diccionario
-def checkImmLabel(strImm, lineCounter):
-    cleanLabel = strImm.replace(":", "")
-    exists = labels.get(cleanLabel)
-    if not exists:
-        # por que es 15 bits?
-        labels[cleanLabel] = format(int(lineCounter), "013b") 
-    else:
-        print("label ya existe")
+def translateImm8(strImm, lineCounter):
+    pass
+
+def translateImm12(strImm, lineCounter):
+    pass
 
 # compila la linea de instruccion
 def compileLine(line:str):
     instrc = line.rsplit(",")
     bin = 0 # instruccion en binario 32 bits
- 
-    # tipo immediate
-    if instrc[0] == "CPI":
-        regDes = translateReg(instrc[1])
-        # instrc[3] es un numero entero a binario pero limitando a 13 bits
-        imm = format(int(instrc[2]), "013b")
-        func3 = "000" # definir que hacer
-        opcode = data_intrucctions[instrc[0]]
-        # retornar binInstrc con el formato imm Func3 regDes opcode
-        bin = imm + func3 + regDes + opcode
-        return bin
-    # tipo I
-    elif instrc[0] == "NP":
-        regDes = translateReg("z0")
-        rs1 = translateReg("z0")
-        # instrc[3] es un numero entero a binario pero limitando a 13 bits
-        imm = format(int(0), "013b")
-        func3 = "000" # definir que hacer
-        opcode = data_intrucctions[instrc[0]]
-        bin = imm + func3 + rs1 + regDes + opcode
-        return bin
-    
-    elif instrc[0] == "DME":
-        regDes = translateReg(instrc[1])
-        rs = translateReg(instrc[2])
-        rs2 = "000000"
-        func3 = "000"
-        func7 = "0000000"
-        opcode = data_intrucctions[instrc[0]]
-        bin = func7 + func3 + rs2 + rs + regDes + opcode
-        return bin
-def getLabels():
-    pass
 
-def checkImmLabel(label, memoryAddress, labels):
-    labelName = label.strip().replace(":", "")
-    labels[labelName] = memoryAddress
+
+    return bin
+    
+
     
 def main():
-   
-    file_path = "C:/Users/Felipe vargas/Downloads/arch1_proyect_2-1/scripts/arm.txt"
-    with open(file_path, "r") as file:
-        raw_txt = file.readlines()
-
-    # Identifica las etiquetas específicas
-    identify_specific_labels(raw_txt)
-
-    # Imprime las etiquetas y su dirección
-    print("labels = {")
-    for label, address in sorted(labels.items(), key=lambda x: x[1]):
-        print(f'    "{label}": 0x{address:02X},')
-    print("}")
+    from tkinter import Tk
+    from tkinter.filedialog import askopenfilename
+    # Initialize the GUI window and hide it
+    Tk().withdraw()
+    # Open a file selection dialog and get the file path
+    file_path = askopenfilename(title='Select assembly file')
+    if file_path: # If a file was selected
+        output_path = file_path.replace('.txt', '.example')
+        labels, instructions = identify_specific_labels_and_instructions(file_path)
+        write_output(output_path, labels, instructions)
+    
 
 if __name__ == "__main__":
     main()
