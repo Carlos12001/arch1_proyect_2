@@ -1,0 +1,174 @@
+
+
+# diccionario de registros
+registers = {
+    "r0": "0000",
+    "r1": "0001",
+    "r2": "0010",
+    "r3": "0011",
+    "r4": "0100",
+    "r5": "0101",
+    "r6": "0110",
+    "r7": "0111",
+    "r8": "1000",
+    "r9": "1001",
+    "r10": "1010",
+    "r11": "1011",
+    "r12": "1100",
+    "sp": "1101",
+    "lr": "1110",
+    "pc": "1111"
+}
+
+# conditional flags
+cond = {
+    "eq": "0000",
+    "ne": "0001",
+    "ge": "1010",
+    "lt": "1011",
+    "le": "1101",
+    "al": "1110",
+}
+
+# data processing intrucctions
+data_intrucctions = {
+    "add": "1000",
+    "cmp": "1010",
+    "mov": "1101",
+    "sub": "0010",
+    "asr": "1101",
+    "eor": "0001",
+    "mvn": "1111",
+
+}
+
+# memory intrucctions
+memory_intrucctions = {
+    "str": "0100",
+    "ldr": "0101",
+    "strb": "0110",
+    "ldrb": "0111"
+}
+
+# branch intrucctions
+branch_intrucctions = {
+    "b": "10",
+    "bl": "11"
+}
+
+# special instrucctions
+special_intrucctions = {
+    "nop": "0000",
+    "end": "1111"
+}
+
+# address values
+address = {
+    "text": "0000",
+    "puntos": "0001",
+    "my_data": "0010",
+}
+
+
+# labels
+labels = {
+}
+
+
+labels = dict()
+# Leer el archivo y limpia los saltos de linea
+def read_txt(path):
+    with open(path, "r") as file:
+        rawInstrc = [line.rstrip("\n").replace(",", "") for line in file]
+    return rawInstrc
+
+# revisa si existe el registro en el diccionario
+def translateReg(reg):
+    if reg not in registers:
+        print(f"Error: {reg} no es un registo valido")
+        exit()
+    else:
+        return registers[reg]
+
+# revisa si existe la instruccion en el diccionario
+def translateLabel(strLabel):
+    if strLabel not in labels:
+        print(f"Error: {strLabel} no es un label valido")
+        exit()
+    else:
+        return labels[strLabel]
+
+# revisa si existe el label en el diccionario
+def checkImmLabel(strImm, lineCounter):
+    cleanLabel = strImm.replace(":", "")
+    exists = labels.get(cleanLabel)
+    if not exists:
+        # por que es 15 bits?
+        labels[cleanLabel] = format(int(lineCounter), "013b") 
+    else:
+        print("label ya existe")
+
+# compila la linea de instruccion
+def compileLine(line:str):
+    instrc = line.rsplit(",")
+    bin = 0 # instruccion en binario 32 bits
+ 
+    # tipo immediate
+    if instrc[0] == "CPI":
+        regDes = translateReg(instrc[1])
+        # instrc[3] es un numero entero a binario pero limitando a 13 bits
+        imm = format(int(instrc[2]), "013b")
+        func3 = "000" # definir que hacer
+        opcode = data_intrucctions[instrc[0]]
+        # retornar binInstrc con el formato imm Func3 regDes opcode
+        bin = imm + func3 + regDes + opcode
+        return bin
+    # tipo I
+    elif instrc[0] == "NP":
+        regDes = translateReg("z0")
+        rs1 = translateReg("z0")
+        # instrc[3] es un numero entero a binario pero limitando a 13 bits
+        imm = format(int(0), "013b")
+        func3 = "000" # definir que hacer
+        opcode = data_intrucctions[instrc[0]]
+        bin = imm + func3 + rs1 + regDes + opcode
+        return bin
+    
+    elif instrc[0] == "DME":
+        regDes = translateReg(instrc[1])
+        rs = translateReg(instrc[2])
+        rs2 = "000000"
+        func3 = "000"
+        func7 = "0000000"
+        opcode = data_intrucctions[instrc[0]]
+        bin = func7 + func3 + rs2 + rs + regDes + opcode
+        return bin
+def getLabels():
+    pass
+
+def mainCompileR():
+    lineCounter = 0
+    rawTxt = open("./arm.txt", "r").readlines()
+
+    # Loop para identificar labels
+    for line in rawTxt:
+
+        instrc = line.rsplit(" ")
+        
+        if len(instrc) == 1 and instrc[0] != "NP":
+            checkImmLabel(line, lineCounter)
+        lineCounter = lineCounter + 1
+    print(lineCounter)
+
+
+
+    # Loop para compilar instrucciones 
+    # data_intrucctionsList = []
+    # for line in rawTxt:
+    #     binLine = compileLine(line)
+    #     if binLine != None:
+    #         data_intrucctionsList.append(binLine)
+    # return data_intrucctionsList
+
+if __name__ == "__main__":
+    mainCompileR()

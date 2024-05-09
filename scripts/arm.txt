@@ -1,0 +1,1254 @@
+_start:
+    mov, r1, =my_data
+    mov, r4, =text
+
+main_loop:
+    ldrb, r0, [r4]
+    cmp, r0, #36
+    b,eq, end_program
+
+    bl, generate_letter
+    mov, r1, r0
+
+    add, r4, r4, #1
+    b, main_loop
+
+end_program:
+    mov, r0, #0
+    mov, r7, #1
+    end,
+
+
+
+
+
+
+
+
+generate_letter:
+  sub, sp, sp, #40  
+  str, lr, [sp, #36]  
+  str, r4, [sp, #32] 
+  str, r5, [sp, #28]  
+  str, r6, [sp, #24]  
+  str, r7, [sp, #20]  
+  str, r8, [sp, #16]  
+  str, r9, [sp, #12]  
+  str, r10, [sp, #8]  
+  str, r11, [sp, #4] 
+
+
+
+ 
+  mov, r4, r0
+  mov, r5, r1
+  mov, r0, r5
+  bl, set_pixel    
+  mov, r12, =puntos
+
+ 
+  cmp, r4, #32
+  b,eq, case_space
+  
+  
+  cmp, r4, #44
+  b,eq, case_comma
+
+ 
+  cmp, r4, #46
+  b,eq, case_punto
+
+  
+  cmp, r4, #65
+  b,eq, case_a
+
+  
+  cmp, r4, #66
+  b,eq, case_b
+
+  
+  cmp, r4, #67
+  b,eq, case_c
+
+ 
+  cmp, r4, #68
+  b,eq, case_d
+
+  
+  cmp, r4, #69
+  b,eq, case_e
+
+  
+  cmp, r4, #70
+  b,eq, case_f
+
+  
+  cmp, r4, #71
+  b,eq, case_g
+
+ 
+  cmp, r4, #72
+  b,eq, case_h
+
+ 
+  cmp, r4, #73
+  b,eq, case_i
+
+  
+  cmp, r4, #74
+  b,eq, case_j
+
+ 
+  cmp, r4, #75
+  b,eq, case_k
+
+  
+  cmp, r4, #76
+  b,eq, case_l
+
+  
+  cmp, r4, #77
+  b,eq, case_m
+
+  
+  cmp, r4, #78
+  b,eq, case_n
+
+  
+  cmp, r4, #79
+  b,eq, case_o
+
+  
+  cmp, r4, #80
+  b,eq, case_p
+
+ 
+  cmp, r4, #81
+  b,eq, case_q
+
+ 
+  cmp, r4, #82
+  b,eq, case_r
+
+ 
+  cmp, r4, #83
+  b,eq, case_s
+
+ 
+  cmp, r4, #84
+  b,eq, case_t
+
+ 
+  cmp, r4, #85
+  b,eq, case_u
+  
+  
+  cmp, r4, #86
+  b,eq, case_v
+
+  
+  cmp, r4, #87
+  b,eq, case_w
+
+ 
+  cmp, r4, #88
+  b,eq, case_x
+
+  
+  cmp, r4, #89
+  b,eq, case_y
+
+ 
+  cmp, r4, #90
+  b,eq, case_z
+
+  
+  b, case_default
+    
+  case_space:
+    b, end_generate_letter
+
+  case_comma:
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #3
+    mov, r3, #2
+    bl, bresenham        
+    
+    b, end_generate_letter
+
+  case_punto:
+    mov, r0, #3
+    mov, r1, #2
+    mov, r2, #3
+    mov, r3, #2
+    bl, bresenham
+    
+    b, end_generate_letter
+
+  case_a:
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #4
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #3
+    mov, r1, #1
+    mov, r2, #3
+    mov, r3, #3
+    bl, bresenham
+
+    b, end_generate_letter
+
+  case_b:
+
+    mov, r0, #1
+    mov, r1, #4
+    mov, r2, #1
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #3
+    mov, r1, #4
+    mov, r2, #3
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #1
+    mov, r2, #2
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    b, end_generate_letter
+  
+
+  case_c:
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    b, end_generate_letter
+
+  case_d:
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #4
+    mov, r2, #3
+    mov, r3, #3
+    bl, bresenham
+
+    b, end_generate_letter
+
+  case_e:
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #1
+    mov, r2, #2
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    b, end_generate_letter
+
+  case_f:
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #1
+    mov, r2, #2
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+
+
+    b, end_generate_letter
+
+  case_g:
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #0
+    mov, r2, #3
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #2
+    mov, r2, #2
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #3
+    mov, r1, #4
+    mov, r2, #3
+    mov, r3, #4
+    bl, bresenham
+
+    b, end_generate_letter
+
+
+  case_h:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #1
+    mov, r2, #2
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #4
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+
+    b, end_generate_letter  
+
+  case_i:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #2
+    mov, r2, #3
+    mov, r3, #2
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+
+    b, end_generate_letter 
+
+  case_j:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #4
+    mov, r2, #3
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #3
+    mov, r1, #0
+    mov, r2, #3
+    mov, r3, #0
+    bl, bresenham
+
+
+    b, end_generate_letter 
+
+  case_k:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #1
+    mov, r2, #2
+    mov, r3, #2
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #3
+    mov, r2, #1
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #4
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #3
+    mov, r1, #3
+    mov, r2, #3
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #4
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+
+    b, end_generate_letter 
+
+  case_l:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    b, end_generate_letter 
+
+  case_m:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #4
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #1
+    mov, r2, #1
+    mov, r3, #1
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #2
+    mov, r2, #2
+    mov, r3, #2
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #3
+    mov, r2, #1
+    mov, r3, #3
+    bl, bresenham
+
+
+    b, end_generate_letter 
+
+
+  case_n:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #4
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #1
+    mov, r2, #1
+    mov, r3, #1
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #2
+    mov, r2, #2
+    mov, r3, #2
+    bl, bresenham
+
+    mov, r0, #3
+    mov, r1, #3
+    mov, r2, #3
+    mov, r3, #3
+    bl, bresenham
+
+
+    b, end_generate_letter 
+
+  case_o:
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #0
+    mov, r2, #3
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #4
+    mov, r2, #3
+    mov, r3, #4
+    bl, bresenham
+
+
+
+    b, end_generate_letter 
+
+
+  case_p:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #1
+    mov, r2, #2
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #4
+    mov, r2, #1
+    mov, r3, #4
+    bl, bresenham
+
+
+
+    b, end_generate_letter 
+
+  case_q:
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #0
+    mov, r2, #3
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #4
+    mov, r2, #2
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #2
+    bl, bresenham
+
+    mov, r0, #3
+    mov, r1, #3
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+
+
+    b, end_generate_letter 
+
+
+  case_r:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #1
+    mov, r2, #2
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #4
+    mov, r2, #1
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #3
+    mov, r1, #3
+    mov, r2, #3
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #4
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    b, end_generate_letter 
+
+
+  case_s:
+
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #2
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #1
+    mov, r2, #2
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #4
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #3
+    bl, bresenham
+
+
+    b, end_generate_letter 
+
+
+  case_t:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #2
+    mov, r2, #4
+    mov, r3, #2
+    bl, bresenham
+
+    b, end_generate_letter 
+
+
+  case_u:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #3
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #4
+    mov, r2, #3
+    mov, r3, #4
+    bl, bresenham
+
+    b, end_generate_letter 
+
+
+  case_v:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #1
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #1
+    mov, r2, #3
+    mov, r3, #1
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #2
+    mov, r2, #4
+    mov, r3, #2
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #4
+    mov, r2, #1
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #3
+    mov, r2, #3
+    mov, r3, #3
+    bl, bresenham
+
+    b, end_generate_letter 
+
+
+
+  case_w:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #3
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #2
+    mov, r2, #3
+    mov, r3, #2
+    bl, bresenham
+
+    mov, r0, #0
+    mov, r1, #4
+    mov, r2, #3
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4
+    mov, r3, #3
+    bl, bresenham
+
+    b, end_generate_letter 
+
+
+  case_x:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #0
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    b, end_generate_letter 
+
+  case_y:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #1
+    mov, r3, #1
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #3
+    mov, r2, #0
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #2
+    mov, r2, #4
+    mov, r3, #2
+    bl, bresenham
+
+    b, end_generate_letter 
+
+  case_z:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #0 
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #3
+    mov, r1, #1
+    mov, r2, #1
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #0
+    mov, r2, #4
+    mov, r3, #4
+    bl, bresenham
+
+    b, end_generate_letter 
+
+  case_default:
+
+    mov, r0, #0
+    mov, r1, #0
+    mov, r2, #4 
+    mov, r3, #0
+    bl, bresenham
+
+    mov, r0, #4
+    mov, r1, #1
+    mov, r2, #4 
+    mov, r3, #4
+    bl, bresenham
+    
+    mov, r0, #0
+    mov, r1, #1
+    mov, r2, #0 
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #3
+    mov, r2, #3
+    mov, r3, #3
+    bl, bresenham
+
+    mov, r0, #1
+    mov, r1, #4
+    mov, r2, #3
+    mov, r3, #4
+    bl, bresenham
+
+    mov, r0, #2
+    mov, r1, #2
+    mov, r2, #2
+    mov, r3, #2
+    bl, bresenham
+
+    b, end_generate_letter
+      
+  end_generate_letter:
+
+  mov, r0, r5
+  mov, r1, r12
+  mov, r2, =puntos
+  bl, points2pixel
+  add, r0, r5, #36
+
+
+  ldr, r11, [sp, #4]  
+  ldr, r10, [sp, #8]  
+  ldr, r9, [sp, #12]  
+  ldr, r8, [sp, #16]  
+  ldr, r7, [sp, #20]  
+  ldr, r6, [sp, #24]  
+  ldr, r5, [sp, #28]  
+  ldr, r4, [sp, #32]  
+  ldr, lr, [sp, #36]  
+  add, sp, sp, #40 
+  mov, pc, lr
+
+
+
+
+
+
+
+
+points2pixel:
+  sub, sp, sp, #40  
+  str, lr, [sp, #36]  
+  str, r4, [sp, #32]  
+  str, r5, [sp, #28]  
+  str, r6, [sp, #24]  
+  str, r7, [sp, #20]  
+  str, r8, [sp, #16]  
+  str, r9, [sp, #12]  
+  str, r10, [sp, #8]  
+  str, r11, [sp, #4]  
+
+  mov, r4, r0          
+  mov, r5, r1          
+  mov, r6, r2          
+  mov, r7, #0
+  cmp, r6, r5
+  b,eq, end_loop_points2pixel
+
+  loop_points2pixel:
+    ldr, r0, [r6]        
+    ldr, r1, [r6, #4]    
+
+    cmp, r0, #0          
+    b,eq, store_y         
+    cmp, r0, #1          
+    add,eq, r1, r1, #6    
+    b,eq, store_y        
+
+    cmp, r0, #2          
+    add,eq, r1, r1, #12   
+    b,eq, store_y         
+
+    cmp, r0, #3          
+    add,eq, r1, r1, #18   
+    b,eq, store_y         
+
+    cmp, r0, #4          
+    add,eq, r1, r1, #24   
+    b,eq, store_y        
+
+    b, end_loop_points2pixel          
+
+  store_y:
+    strb, r7, [r4, r1]   
+
+  end_loop_points2pixel:
+    add, r6, r6, #8      
+	cmp, r6, r5 
+	b,lt, loop_points2pixel 
+
+
+  ldr, r11, [sp, #4]  
+  ldr, r10, [sp, #8]  
+  ldr, r9, [sp, #12]  
+  ldr, r8, [sp, #16]  
+  ldr, r7, [sp, #20]  
+  ldr, r6, [sp, #24]  
+  ldr, r5, [sp, #28]  
+  ldr, r4, [sp, #32]  
+  ldr, lr, [sp, #36]  
+  add, sp, sp, #40 
+  mov, pc, lr
+
+
+
+
+
+
+
+
+
+
+
+set_pixel:
+sub, sp, sp, #12    
+str, lr, [sp, #8]   
+str, r2, [sp, #4]   
+str, r1, [sp]      
+
+mov, r1, #255
+mov, r2, #0
+
+set_pixel_for:
+strb, r1, [r0, r2]  
+add, r2, r2, #1
+cmp, r2, #36        
+b,ne, set_pixel_for
+
+ldr, r1, [sp]       
+ldr, r2, [sp, #4]   
+ldr, lr, [sp, #8]   
+add, sp, sp, #12    
+
+mov, pc, lr         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bresenham:
+sub, sp, sp, #40  
+str, lr, [sp, #36]  
+str, r4, [sp, #32] 
+str, r5, [sp, #28] 
+str, r6, [sp, #24] 
+str, r7, [sp, #20]  
+str, r8, [sp, #16]  
+str, r9, [sp, #12] 
+str, r10, [sp, #8] 
+str, r11, [sp, #4] 
+
+mov, r4, r0
+mov, r5, r1
+mov, r6, r2
+mov, r7, r3
+
+sub, r0, r6, r4
+bl, abs
+mov, r8, r0 
+sub, r0, r7, r5
+bl, abs
+mov, r9, r0 
+mov, r10, r4  
+mov, r11, r5
+
+
+if_x_compare: 
+cmp, r4, r6
+b,le, else_x_compare 
+mvn, r4, #0
+b, end_if_x_compare
+
+else_x_compare:
+mov, r4, #0x1 
+end_if_x_compare:
+
+if_y_compare:  
+cmp, r5, r7
+b,le, else_y_compare
+mvn, r5, #0
+b, end_if_y_compare
+else_y_compare:
+mov, r5, #01
+
+end_if_y_compare:
+
+if_differentials:  
+cmp, r8, r9
+b,le, else_differentials
+asr, r0, r8, #0x01 
+
+while_dx_bigger: 
+cmp, r10, r6
+b,eq, end_while_dx_bigger
+str, r10, [r12] 
+add, r12, r12, #0x04
+str, r11, [r12]
+add, r12, r12, #0x04
+sub, r0, r0, r9 
+
+if_while_dx_bigger: 
+cmp, r0, #0x00
+b,ge, end_if_while_dx_bigger
+add, r11, r11, r5 
+add, r0, r0, r8   
+
+end_if_while_dx_bigger:
+add, r10, r10, r4 
+b, while_dx_bigger
+
+end_while_dx_bigger:
+b, end_if_differentials
+
+else_differentials:
+asr, r0, r9, #0x01 
+
+while_dy_bigger: 
+cmp, r11, r7
+b,eq, end_while_dy_bigger
+str, r10, [r12] 
+add, r12, r12, #0x04
+str, r11, [r12] 
+add, r12, r12, #0x04
+sub, r0, r0, r8 
+
+if_while_dy_bigger:  
+cmp, r0, #0x00
+b,ge, end_if_while_dy_bigger
+add, r10, r10, r4 
+add, r0, r0, r9   
+
+end_if_while_dy_bigger:
+add, r11, r11, r5 
+b, while_dy_bigger
+
+end_while_dy_bigger:
+b, end_if_differentials
+
+end_if_differentials:
+
+str, r6, [r12] 
+add, r12, r12, #0x04
+str, r7, [r12] 
+add, r12, r12, #0x04
+
+mov, r0, r12
+ldr, r11, [sp, #4] 
+ldr, r10, [sp, #8] 
+ldr, r9, [sp, #12] 
+ldr, r8, [sp, #16] 
+ldr, r7, [sp, #20] 
+ldr, r6, [sp, #24] 
+ldr, r5, [sp, #28] 
+ldr, r4, [sp, #32] 
+ldr, lr, [sp, #36] 
+add, sp, sp, #40  
+mov, pc, lr
+
+ldr, r11, [sp, #4]  
+ldr, r10, [sp, #8]  
+ldr, r9, [sp, #12] 
+ldr, r8, [sp, #16] 
+ldr, r7, [sp, #20] 
+ldr, r6, [sp, #24] 
+ldr, r5, [sp, #28] 
+ldr, r4, [sp, #32] 
+ldr, lr, [sp, #36] 
+add, sp, sp, #40  
+mov, pc, lr
+
+
+abs:
+asr, r1, r0, #0x1f 
+add, r2, r0, r1 
+eor, r3, r2, r1 
+mov, r0, r3     
+mov, pc, lr        
