@@ -3,6 +3,7 @@ specific_labels = {
     "_start",
     "main_loop",
     "generate_letter",
+    "end_program",
     "case_space",
     "case_comma",
     "case_punto",
