@@ -1,5 +1,5 @@
-set, v1, my_data
-set, v4, text
+set, v1, #0x800
+set, v4, #0x0
 letter, v0, v4
 com, v0, #36
 b,eq, end_program
@@ -24,7 +24,7 @@ set, v4, v0
 set, v5, v1
 set, v0, v5
 bl, set_pixel
-set, v12, puntos
+set, v12, #0x400
 com, v4, #32
 b,eq, case_space
 com, v4, #44
@@ -671,7 +671,7 @@ bl, bresenham
 b, end_generate_letter
 set, v0, v5
 set, v1, v12
-set, v2, puntos
+set, v2, #0x400
 bl, points2pixel
 sum, v0, v5, #36
 ldw, v11, sk, #4
