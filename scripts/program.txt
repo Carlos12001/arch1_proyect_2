@@ -1,6 +1,6 @@
 _start:
-    set, v1, my_data
-    set, v4, text
+    set, v1, #2048
+    set, v4, #0
 
 main_loop:
     letter, v0, v4
@@ -44,7 +44,7 @@ generate_letter:
   set, v5, v1
   set, v0, v5
   bl, set_pixel    
-  set, v12, puntos
+  set, v12, #1024
 
  
   com, v4, #32
@@ -979,7 +979,7 @@ generate_letter:
 
   set, v0, v5
   set, v1, v12
-  set, v2, puntos
+  set, v2, #1024
   bl, points2pixel
   sum, v0, v5, #36
 
@@ -1148,7 +1148,7 @@ aset, v4, #0
 b, end_if_x_compare
 
 else_x_compare:
-set, v4, #0x1 
+set, v4, #1 
 end_if_x_compare:
 
 if_y_compare:  
@@ -1157,26 +1157,26 @@ b,le, else_y_compare
 aset, v5, #0
 b, end_if_y_compare
 else_y_compare:
-set, v5, #01
+set, v5, #1
 
 end_if_y_compare:
 
 if_differentials:  
 com, v8, v9
 b,le, else_differentials
-divi, v0, v8, #0x01 
+divi, v0, v8, #1 
 
 while_dx_bigger: 
 com, v10, v6
 b,eq, end_while_dx_bigger
 stw, v10, v12 
-sum, v12, v12, #0x04
+sum, v12, v12, #4
 stw, v11, v12
-sum, v12, v12, #0x04
+sum, v12, v12, #4
 dec, v0, v0, v9 
 
 if_while_dx_bigger: 
-com, v0, #0x00
+com, v0, #0
 b,ge, end_if_while_dx_bigger
 sum, v11, v11, v5 
 sum, v0, v0, v8   
@@ -1189,19 +1189,19 @@ end_while_dx_bigger:
 b, end_if_differentials
 
 else_differentials:
-divi, v0, v9, #0x01 
+divi, v0, v9, #1 
 
 while_dy_bigger: 
 com, v11, v7
 b,eq, end_while_dy_bigger
 stw, v10, v12 
-sum, v12, v12, #0x04
+sum, v12, v12, #4
 stw, v11, v12 
-sum, v12, v12, #0x04
+sum, v12, v12, #4
 dec, v0, v0, v8 
 
 if_while_dy_bigger:  
-com, v0, #0x00
+com, v0, #0
 b,ge, end_if_while_dy_bigger
 sum, v10, v10, v4 
 sum, v0, v0, v9   
@@ -1216,9 +1216,9 @@ b, end_if_differentials
 end_if_differentials:
 
 stw, v6, v12 
-sum, v12, v12, #0x04
+sum, v12, v12, #4
 stw, v7, v12 
-sum, v12, v12, #0x04
+sum, v12, v12, #4
 
 set, v0, v12
 ldw, v11, sk, #4 
@@ -1247,7 +1247,7 @@ set, pc, lk
 
 
 abs:
-divi, v1, v0, #0x1f 
+divi, v1, v0, #31
 sum, v2, v0, v1 
 xor, v3, v2, v1 
 set, v0, v3     
