@@ -41,7 +41,6 @@ db
 *.elf
 *.vqm
 *.hex
-*.mif
 *.ttf
 *.css
 *.svg
@@ -62,7 +61,6 @@ db
 *.pvl
 *.syn
 *.mrp
-*.mif
 *.hex
 *.o
 *.d

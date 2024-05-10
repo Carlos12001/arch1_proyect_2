@@ -28,7 +28,7 @@ module dmem(input  logic        clk, we,
   logic [31:0] RAM[63:0];
 
   initial
-    $readmemh("C:/Users/Ignac/Documentos/Arqui1/PruebasDeProcesador/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023-VersionConROMs/Proyecto/memfiletwo.dat",RAM);
+    $readmemh("C:/Users/carlos/Repos/arch1_proyect_2/Proyecto/memfiletwo.dat",RAM);
 
   assign rd = RAM[a[22:2]]; // word aligned
 
@@ -44,7 +44,7 @@ module imem(input  logic [31:0] a,
   logic [31:0] RAM[63:0];
 
   initial
-    $readmemh("C:/Users/Ignac/Documentos/Arqui1/PruebasDeProcesador/JAguero_IGrane_MGonzales-Digital_Desing_Workshop-2023-VersionConROMs/Proyecto/memfiletwo.dat",RAM);
+    $readmemh("C:/Users/carlos/Repos/arch1_proyect_2/Proyecto/memfiletwo.dat",RAM);
 
   assign rd = RAM[a[22:2]]; // word aligned
   

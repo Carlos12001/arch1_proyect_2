@@ -97,16 +97,17 @@ def identify_specific_labels_and_instructions(file_path):
 def write_output(output_path, labels, instructions):
     # Escribe las instrucciones en formato .mif
     with open(output_path, 'w') as output_file:
-        output_file.write("WIDTH=32;\n")
-        output_file.write(f"DEPTH={len(instructions)};\n")
-        output_file.write("ADDRESS_RADIX=HEX;\n")
-        output_file.write("DATA_RADIX=HEX;\n")
-        output_file.write("CONTENT BEGIN\n")
+        # output_file.write("WIDTH=32;\n")
+        # output_file.write(f"DEPTH={len(instructions)};\n")
+        # output_file.write("ADDRESS_RADIX=HEX;\n")
+        # output_file.write("DATA_RADIX=HEX;\n")
+        # output_file.write("CONTENT BEGIN\n")
 
         for address, instruction in enumerate(instructions):
             bin_instr = compileLine(instruction, labels, address*4)
             hex_instr = f"{int(bin_instr, 2):08X}"
-            output_file.write(f"{address:X} : {hex_instr};\n")
+            # output_file.write(f"{address:X} : {hex_instr};\n")
+            output_file.write(f"{hex_instr}\n")
 
         output_file.write("END;\n")
 
@@ -318,7 +319,7 @@ def main():
     # Open a file selection dialog and get the file path
     file_path = askopenfilename(title='Select assembly file')
     if file_path: # If a file was selected
-        output_path = file_path.replace('.txt', '.mif')
+        output_path = file_path.replace('.txt', '.dat')
         labels, instructions = identify_specific_labels_and_instructions(file_path)
         write_output(output_path, labels, instructions)
         # for address, instruction in enumerate(instructions):
