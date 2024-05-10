@@ -55,8 +55,8 @@ memory_instructions = {
 
 # branch intrucctions
 branch_instructions = {
-    "b": "0",
-    "bl": "1"
+    "b": "10",
+    "bl": "11"
 }
 
 # special instrucctions
@@ -80,6 +80,9 @@ def identify_specific_labels_and_instructions(file_path):
             if not line:
                 continue
 
+            # Reemplaza el carácter " " por ""
+            line = line.replace(" ", "")
+
             # Si es un label (termina con ":")
             if line.endswith(':'):
                 label = line[:-1]
@@ -92,21 +95,22 @@ def identify_specific_labels_and_instructions(file_path):
     return labels, instructions
 
 def write_output(output_path, labels, instructions):
-    # Escribe las instrucciones sin los labels en el archivo de salida
+    # Escribe las instrucciones en formato .mif
     with open(output_path, 'w') as output_file:
-        for instruction in instructions:
-            output_file.write(f'{instruction}\n')
+        output_file.write("WIDTH=32;\n")
+        output_file.write(f"DEPTH={len(instructions)};\n")
+        output_file.write("ADDRESS_RADIX=HEX;\n")
+        output_file.write("DATA_RADIX=HEX;\n")
+        output_file.write("CONTENT BEGIN\n")
 
-    # Opción: muestra los labels en la consola
-    print("Labels encontrados:")
-    for label, address in labels.items():
-        print(f'{label}: {address:08x}')
+        for address, instruction in enumerate(instructions):
+            bin_instr = compileLine(instruction, labels, address*4)
+            hex_instr = f"{int(bin_instr, 2):08X}"
+            output_file.write(f"{address:X} : {hex_instr};\n")
+
+        output_file.write("END;\n")
 
 
-def translateReg(reg):
-    pass
-def translateLabel(strLabel):
-    pass
 
   # Ajustar el inmediato a imm8 y rot
 def calculate_imm8_and_rot(value):
@@ -251,11 +255,48 @@ def compileLine(line: str, labels: dict, address: int):
 
         # Branch Instructions
         elif instrc[0] in branch_instructions:
-            opcode_bin = f"10"
+            opcode_bin = "10"
+            l_bit = branch_instructions[instrc[0]]
+            
+            # Verificar si se especifica un código de condición
+            if len(instrc) == 3 and instrc[1] in cond and instrc[0] != "bl":
+                cond_bin = cond[instrc[1]]
+                label_index = 2
+            else:
+                cond_bin = cond["al"]  # Condición por defecto (always)
+                label_index = 1
+            
+            # Obtener la etiqueta de destino
+            target_label = instrc[label_index]
+            
+            # Verificar si la etiqueta existe en el diccionario de etiquetas
+            if target_label not in labels:
+                raise ValueError(f"Etiqueta '{target_label}' no encontrada")
+            
+            # Calcular el offset relativo a la dirección actual
+            target_address = labels[target_label]
+            offset = (target_address - address - 8) // 4
+            
+            # Verificar el rango del offset (-2^23 a 2^23 - 1)
+            if offset < -2**23 or offset >= 2**23:
+                raise ValueError(f"Offset fuera de rango para la instrucción de branch")
+            
+            # Convertir el offset a binario (24 bits) con signo
+            offset_bin = f"{offset & 0xFFFFFF:024b}"
+            
+            # Construir la instrucción en binario
+            bin_instr = f"{cond_bin}{opcode_bin}{l_bit}{offset_bin}"
+
 
         # Special Instructions
         elif instrc[0] in special_instructions:
             opcode_bin = "11"
+            # Obtener el código de función de la instrucción especial
+            funct_bin = special_instructions[instrc[0]]
+            
+            # Construir la instrucción en binario con relleno de 1
+            bin_instr = f"1111{opcode_bin}1111111111111111111111{funct_bin}"
+
 
         # Throw an error
         else:
@@ -270,22 +311,21 @@ def compileLine(line: str, labels: dict, address: int):
 
     
 def main():
-    # from tkinter import Tk
-    # from tkinter.filedialog import askopenfilename
-    # # Initialize the GUI window and hide it
-    # Tk().withdraw()
-    # # Open a file selection dialog and get the file path
-    # file_path = askopenfilename(title='Select assembly file')
-    # if file_path: # If a file was selected
-    #     output_path = file_path.replace('.txt', '.example')
-    #     labels, instructions = identify_specific_labels_and_instructions(file_path)
-    #     write_output(output_path, labels, instructions)
-    #     for address, instruction in enumerate(instructions):
-    #         bin = compileLine(instruction, labels, address)
-    #         # print(f"{address*4:08x}: {bin:32x}")
-    #         # if address > 10:
-    #         #     break
-        # Ejemplo de uso de compileLine
+    from tkinter import Tk
+    from tkinter.filedialog import askopenfilename
+    # Initialize the GUI window and hide it
+    Tk().withdraw()
+    # Open a file selection dialog and get the file path
+    file_path = askopenfilename(title='Select assembly file')
+    if file_path: # If a file was selected
+        output_path = file_path.replace('.txt', '.mif')
+        labels, instructions = identify_specific_labels_and_instructions(file_path)
+        write_output(output_path, labels, instructions)
+        # for address, instruction in enumerate(instructions):
+        #     bin = compileLine(instruction, labels, address*4)
+        #     print(bin) 
+        #     print(f"{int(bin, 2):08x}")
+            
     # lines = [
     #     "sum,v0,v1,v2",
     #     "com,v2,#12",
@@ -294,20 +334,8 @@ def main():
     #     "divi,v1,v5,#31",
     #     "sum,eq,v1,v1,#18"
     # ]
-    lines = [
-        "stw,v6,v12",
-        "ldw,v11,sk,#4",
-        "stw,v10,v12",
-        "savepix,v7,v4,v1"
-    ]
-    labels = {}
 
 
-
-    for i,line in enumerate(lines):
-        bin = compileLine(line, labels, 4*i)
-        print(bin) 
-        print(f"{int(bin, 2):08x}")
 
 if __name__ == "__main__":
     main()

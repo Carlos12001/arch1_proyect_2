@@ -1,846 +1,846 @@
-set, v1, #0x800
-set, v4, #0x0
-letter, v0, v4
-com, v0, #36
-b,eq, end_program
-bl, generate_letter
-set, v1, v0
-sum, v4, v4, #1
-b, main_loop
-set, v0, #0
-set, v7, #1
+set,v1,#2048
+set,v4,#0
+letter,v0,v4
+com,v0,#36
+b,eq,end_program
+bl,generate_letter
+set,v1,v0
+sum,v4,v4,#1
+b,main_loop
+set,v0,#0
+set,v7,#1
 end,
-dec, sk, sk, #40
-stw, lk, sk, #36
-stw, v4, sk, #32
-stw, v5, sk, #28
-stw, v6, sk, #24
-stw, v7, sk, #20
-stw, v8, sk, #16
-stw, v9, sk, #12
-stw, v10, sk, #8
-stw, v11, sk, #4
-set, v4, v0
-set, v5, v1
-set, v0, v5
-bl, set_pixel
-set, v12, #0x400
-com, v4, #32
-b,eq, case_space
-com, v4, #44
-b,eq, case_comma
-com, v4, #46
-b,eq, case_punto
-com, v4, #65
-b,eq, case_a
-com, v4, #66
-b,eq, case_b
-com, v4, #67
-b,eq, case_c
-com, v4, #68
-b,eq, case_d
-com, v4, #69
-b,eq, case_e
-com, v4, #70
-b,eq, case_f
-com, v4, #71
-b,eq, case_g
-com, v4, #72
-b,eq, case_h
-com, v4, #73
-b,eq, case_i
-com, v4, #74
-b,eq, case_j
-com, v4, #75
-b,eq, case_k
-com, v4, #76
-b,eq, case_l
-com, v4, #77
-b,eq, case_m
-com, v4, #78
-b,eq, case_n
-com, v4, #79
-b,eq, case_o
-com, v4, #80
-b,eq, case_p
-com, v4, #81
-b,eq, case_q
-com, v4, #82
-b,eq, case_r
-com, v4, #83
-b,eq, case_s
-com, v4, #84
-b,eq, case_t
-com, v4, #85
-b,eq, case_u
-com, v4, #86
-b,eq, case_v
-com, v4, #87
-b,eq, case_w
-com, v4, #88
-b,eq, case_x
-com, v4, #89
-b,eq, case_y
-com, v4, #90
-b,eq, case_z
-b, case_default
-b, end_generate_letter
-set, v0, #4
-set, v1, #1
-set, v2, #3
-set, v3, #2
-bl, bresenham
-b, end_generate_letter
-set, v0, #3
-set, v1, #2
-set, v2, #3
-set, v3, #2
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #3
-bl, bresenham
-set, v0, #1
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #1
-set, v1, #4
-set, v2, #4
-set, v3, #4
-bl, bresenham
-set, v0, #3
-set, v1, #1
-set, v2, #3
-set, v3, #3
-bl, bresenham
-b, end_generate_letter
-set, v0, #1
-set, v1, #4
-set, v2, #1
-set, v3, #4
-bl, bresenham
-set, v0, #3
-set, v1, #4
-set, v2, #3
-set, v3, #4
-bl, bresenham
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #3
-bl, bresenham
-set, v0, #2
-set, v1, #1
-set, v2, #2
-set, v3, #3
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #3
-bl, bresenham
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #3
-bl, bresenham
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #3
-bl, bresenham
-set, v0, #1
-set, v1, #4
-set, v2, #3
-set, v3, #3
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #2
-set, v1, #1
-set, v2, #2
-set, v3, #4
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #4
-bl, bresenham
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #2
-set, v1, #1
-set, v2, #2
-set, v3, #3
-bl, bresenham
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #1
-set, v1, #0
-set, v2, #3
-set, v3, #0
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #4
-bl, bresenham
-set, v0, #2
-set, v1, #2
-set, v2, #2
-set, v3, #4
-bl, bresenham
-set, v0, #3
-set, v1, #4
-set, v2, #3
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #2
-set, v1, #1
-set, v2, #2
-set, v3, #3
-bl, bresenham
-set, v0, #0
-set, v1, #4
-set, v2, #4
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #1
-set, v1, #2
-set, v2, #3
-set, v3, #2
-bl, bresenham
-set, v0, #4
-set, v1, #0
-set, v2, #4
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #1
-set, v1, #4
-set, v2, #3
-set, v3, #4
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #3
-bl, bresenham
-set, v0, #3
-set, v1, #0
-set, v2, #3
-set, v3, #0
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #2
-set, v1, #1
-set, v2, #2
-set, v3, #2
-bl, bresenham
-set, v0, #1
-set, v1, #3
-set, v2, #1
-set, v3, #3
-bl, bresenham
-set, v0, #0
-set, v1, #4
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #3
-set, v1, #3
-set, v2, #3
-set, v3, #3
-bl, bresenham
-set, v0, #4
-set, v1, #4
-set, v2, #4
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #0
-set, v1, #4
-set, v2, #4
-set, v3, #4
-bl, bresenham
-set, v0, #1
-set, v1, #1
-set, v2, #1
-set, v3, #1
-bl, bresenham
-set, v0, #2
-set, v1, #2
-set, v2, #2
-set, v3, #2
-bl, bresenham
-set, v0, #1
-set, v1, #3
-set, v2, #1
-set, v3, #3
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #0
-set, v1, #4
-set, v2, #4
-set, v3, #4
-bl, bresenham
-set, v0, #1
-set, v1, #1
-set, v2, #1
-set, v3, #1
-bl, bresenham
-set, v0, #2
-set, v1, #2
-set, v2, #2
-set, v3, #2
-bl, bresenham
-set, v0, #3
-set, v1, #3
-set, v2, #3
-set, v3, #3
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #3
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #3
-bl, bresenham
-set, v0, #1
-set, v1, #0
-set, v2, #3
-set, v3, #0
-bl, bresenham
-set, v0, #1
-set, v1, #4
-set, v2, #3
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #3
-bl, bresenham
-set, v0, #2
-set, v1, #1
-set, v2, #2
-set, v3, #3
-bl, bresenham
-set, v0, #1
-set, v1, #4
-set, v2, #1
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #3
-bl, bresenham
-set, v0, #1
-set, v1, #0
-set, v2, #3
-set, v3, #0
-bl, bresenham
-set, v0, #1
-set, v1, #4
-set, v2, #2
-set, v3, #4
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #2
-bl, bresenham
-set, v0, #3
-set, v1, #3
-set, v2, #4
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #2
-set, v1, #1
-set, v2, #2
-set, v3, #4
-bl, bresenham
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #3
-bl, bresenham
-set, v0, #1
-set, v1, #4
-set, v2, #1
-set, v3, #4
-bl, bresenham
-set, v0, #3
-set, v1, #3
-set, v2, #3
-set, v3, #3
-bl, bresenham
-set, v0, #4
-set, v1, #4
-set, v2, #4
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #0
-set, v1, #0
-set, v2, #2
-set, v3, #0
-bl, bresenham
-set, v0, #2
-set, v1, #1
-set, v2, #2
-set, v3, #3
-bl, bresenham
-set, v0, #2
-set, v1, #4
-set, v2, #4
-set, v3, #4
-bl, bresenham
-set, v0, #4
-set, v1, #0
-set, v2, #4
-set, v3, #3
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #1
-set, v1, #2
-set, v2, #4
-set, v3, #2
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #3
-set, v3, #0
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #3
-bl, bresenham
-set, v0, #0
-set, v1, #4
-set, v2, #3
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #1
-set, v3, #0
-bl, bresenham
-set, v0, #2
-set, v1, #1
-set, v2, #3
-set, v3, #1
-bl, bresenham
-set, v0, #4
-set, v1, #2
-set, v2, #4
-set, v3, #2
-bl, bresenham
-set, v0, #0
-set, v1, #4
-set, v2, #1
-set, v3, #4
-bl, bresenham
-set, v0, #2
-set, v1, #3
-set, v2, #3
-set, v3, #3
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #3
-set, v3, #0
-bl, bresenham
-set, v0, #0
-set, v1, #2
-set, v2, #3
-set, v3, #2
-bl, bresenham
-set, v0, #0
-set, v1, #4
-set, v2, #3
-set, v3, #4
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #3
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #4
-bl, bresenham
-set, v0, #4
-set, v1, #0
-set, v2, #0
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #1
-set, v3, #1
-bl, bresenham
-set, v0, #1
-set, v1, #3
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #2
-set, v1, #2
-set, v2, #4
-set, v3, #2
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #3
-set, v1, #1
-set, v2, #1
-set, v3, #3
-bl, bresenham
-set, v0, #4
-set, v1, #0
-set, v2, #4
-set, v3, #4
-bl, bresenham
-b, end_generate_letter
-set, v0, #0
-set, v1, #0
-set, v2, #4
-set, v3, #0
-bl, bresenham
-set, v0, #4
-set, v1, #1
-set, v2, #4
-set, v3, #4
-bl, bresenham
-set, v0, #0
-set, v1, #1
-set, v2, #0
-set, v3, #4
-bl, bresenham
-set, v0, #1
-set, v1, #3
-set, v2, #3
-set, v3, #3
-bl, bresenham
-set, v0, #1
-set, v1, #4
-set, v2, #3
-set, v3, #4
-bl, bresenham
-set, v0, #2
-set, v1, #2
-set, v2, #2
-set, v3, #2
-bl, bresenham
-b, end_generate_letter
-set, v0, v5
-set, v1, v12
-set, v2, #0x400
-bl, points2pixel
-sum, v0, v5, #36
-ldw, v11, sk, #4
-ldw, v10, sk, #8
-ldw, v9, sk, #12
-ldw, v8, sk, #16
-ldw, v7, sk, #20
-ldw, v6, sk, #24
-ldw, v5, sk, #28
-ldw, v4, sk, #32
-ldw, lk, sk, #36
-sum, sk, sk, #40
-set, pc, lk
-dec, sk, sk, #40
-stw, lk, sk, #36
-stw, v4, sk, #32
-stw, v5, sk, #28
-stw, v6, sk, #24
-stw, v7, sk, #20
-stw, v8, sk, #16
-stw, v9, sk, #12
-stw, v10, sk, #8
-stw, v11, sk, #4
-set, v4, v0
-set, v5, v1
-set, v6, v2
-set, v7, #0
-com, v6, v5
-b,eq, end_loop_points2pixel
-ldw, v0, v6
-ldw, v1, v6, #4
-com, v0, #0
-b,eq, store_y
-com, v0, #1
-sum,eq, v1, v1, #6
-b,eq, store_y
-com, v0, #2
-sum,eq, v1, v1, #12
-b,eq, store_y
-com, v0, #3
-sum,eq, v1, v1, #18
-b,eq, store_y
-com, v0, #4
-sum,eq, v1, v1, #24
-b,eq, store_y
-b, end_loop_points2pixel
-savepix, v7, v4, v1
-sum, v6, v6, #8
-com, v6, v5
-b,lt, loop_points2pixel
-ldw, v11, sk, #4
-ldw, v10, sk, #8
-ldw, v9, sk, #12
-ldw, v8, sk, #16
-ldw, v7, sk, #20
-ldw, v6, sk, #24
-ldw, v5, sk, #28
-ldw, v4, sk, #32
-ldw, lk, sk, #36
-sum, sk, sk, #40
-set, pc, lk
-dec, sk, sk, #12
-stw, lk, sk, #8
-stw, v2, sk, #4
-stw, v1, sk
-set, v1, #255
-set, v2, #0
-savepix, v1, v0, v2
-sum, v2, v2, #1
-com, v2, #36
-b,ne, set_pixel_for
-ldw, v1, sk
-ldw, v2, sk, #4
-ldw, lk, sk, #8
-sum, sk, sk, #12
-set, pc, lk
-dec, sk, sk, #40
-stw, lk, sk, #36
-stw, v4, sk, #32
-stw, v5, sk, #28
-stw, v6, sk, #24
-stw, v7, sk, #20
-stw, v8, sk, #16
-stw, v9, sk, #12
-stw, v10, sk, #8
-stw, v11, sk, #4
-set, v4, v0
-set, v5, v1
-set, v6, v2
-set, v7, v3
-dec, v0, v6, v4
-bl, abs
-set, v8, v0
-dec, v0, v7, v5
-bl, abs
-set, v9, v0
-set, v10, v4
-set, v11, v5
-com, v4, v6
-b,le, else_x_compare
-aset, v4, #0
-b, end_if_x_compare
-set, v4, #0x1
-com, v5, v7
-b,le, else_y_compare
-aset, v5, #0
-b, end_if_y_compare
-set, v5, #01
-com, v8, v9
-b,le, else_differentials
-divi, v0, v8, #0x01
-com, v10, v6
-b,eq, end_while_dx_bigger
-stw, v10, v12
-sum, v12, v12, #0x04
-stw, v11, v12
-sum, v12, v12, #0x04
-dec, v0, v0, v9
-com, v0, #0x00
-b,ge, end_if_while_dx_bigger
-sum, v11, v11, v5
-sum, v0, v0, v8
-sum, v10, v10, v4
-b, while_dx_bigger
-b, end_if_differentials
-divi, v0, v9, #0x01
-com, v11, v7
-b,eq, end_while_dy_bigger
-stw, v10, v12
-sum, v12, v12, #0x04
-stw, v11, v12
-sum, v12, v12, #0x04
-dec, v0, v0, v8
-com, v0, #0x00
-b,ge, end_if_while_dy_bigger
-sum, v10, v10, v4
-sum, v0, v0, v9
-sum, v11, v11, v5
-b, while_dy_bigger
-b, end_if_differentials
-stw, v6, v12
-sum, v12, v12, #0x04
-stw, v7, v12
-sum, v12, v12, #0x04
-set, v0, v12
-ldw, v11, sk, #4
-ldw, v10, sk, #8
-ldw, v9, sk, #12
-ldw, v8, sk, #16
-ldw, v7, sk, #20
-ldw, v6, sk, #24
-ldw, v5, sk, #28
-ldw, v4, sk, #32
-ldw, lk, sk, #36
-sum, sk, sk, #40
-set, pc, lk
-ldw, v11, sk, #4
-ldw, v10, sk, #8
-ldw, v9, sk, #12
-ldw, v8, sk, #16
-ldw, v7, sk, #20
-ldw, v6, sk, #24
-ldw, v5, sk, #28
-ldw, v4, sk, #32
-ldw, lk, sk, #36
-sum, sk, sk, #40
-set, pc, lk
-divi, v1, v0, #0x1f
-sum, v2, v0, v1
-xor, v3, v2, v1
-set, v0, v3
-set, pc, lk
+dec,sk,sk,#40
+stw,lk,sk,#36
+stw,v4,sk,#32
+stw,v5,sk,#28
+stw,v6,sk,#24
+stw,v7,sk,#20
+stw,v8,sk,#16
+stw,v9,sk,#12
+stw,v10,sk,#8
+stw,v11,sk,#4
+set,v4,v0
+set,v5,v1
+set,v0,v5
+bl,set_pixel
+set,v12,#1024
+com,v4,#32
+b,eq,case_space
+com,v4,#44
+b,eq,case_comma
+com,v4,#46
+b,eq,case_punto
+com,v4,#65
+b,eq,case_a
+com,v4,#66
+b,eq,case_b
+com,v4,#67
+b,eq,case_c
+com,v4,#68
+b,eq,case_d
+com,v4,#69
+b,eq,case_e
+com,v4,#70
+b,eq,case_f
+com,v4,#71
+b,eq,case_g
+com,v4,#72
+b,eq,case_h
+com,v4,#73
+b,eq,case_i
+com,v4,#74
+b,eq,case_j
+com,v4,#75
+b,eq,case_k
+com,v4,#76
+b,eq,case_l
+com,v4,#77
+b,eq,case_m
+com,v4,#78
+b,eq,case_n
+com,v4,#79
+b,eq,case_o
+com,v4,#80
+b,eq,case_p
+com,v4,#81
+b,eq,case_q
+com,v4,#82
+b,eq,case_r
+com,v4,#83
+b,eq,case_s
+com,v4,#84
+b,eq,case_t
+com,v4,#85
+b,eq,case_u
+com,v4,#86
+b,eq,case_v
+com,v4,#87
+b,eq,case_w
+com,v4,#88
+b,eq,case_x
+com,v4,#89
+b,eq,case_y
+com,v4,#90
+b,eq,case_z
+b,case_default
+b,end_generate_letter
+set,v0,#4
+set,v1,#1
+set,v2,#3
+set,v3,#2
+bl,bresenham
+b,end_generate_letter
+set,v0,#3
+set,v1,#2
+set,v2,#3
+set,v3,#2
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#3
+bl,bresenham
+set,v0,#1
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#1
+set,v1,#4
+set,v2,#4
+set,v3,#4
+bl,bresenham
+set,v0,#3
+set,v1,#1
+set,v2,#3
+set,v3,#3
+bl,bresenham
+b,end_generate_letter
+set,v0,#1
+set,v1,#4
+set,v2,#1
+set,v3,#4
+bl,bresenham
+set,v0,#3
+set,v1,#4
+set,v2,#3
+set,v3,#4
+bl,bresenham
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#3
+bl,bresenham
+set,v0,#2
+set,v1,#1
+set,v2,#2
+set,v3,#3
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#3
+bl,bresenham
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#3
+bl,bresenham
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#3
+bl,bresenham
+set,v0,#1
+set,v1,#4
+set,v2,#3
+set,v3,#3
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#2
+set,v1,#1
+set,v2,#2
+set,v3,#4
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#4
+bl,bresenham
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#2
+set,v1,#1
+set,v2,#2
+set,v3,#3
+bl,bresenham
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#1
+set,v1,#0
+set,v2,#3
+set,v3,#0
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#4
+bl,bresenham
+set,v0,#2
+set,v1,#2
+set,v2,#2
+set,v3,#4
+bl,bresenham
+set,v0,#3
+set,v1,#4
+set,v2,#3
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#2
+set,v1,#1
+set,v2,#2
+set,v3,#3
+bl,bresenham
+set,v0,#0
+set,v1,#4
+set,v2,#4
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#1
+set,v1,#2
+set,v2,#3
+set,v3,#2
+bl,bresenham
+set,v0,#4
+set,v1,#0
+set,v2,#4
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#1
+set,v1,#4
+set,v2,#3
+set,v3,#4
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#3
+bl,bresenham
+set,v0,#3
+set,v1,#0
+set,v2,#3
+set,v3,#0
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#2
+set,v1,#1
+set,v2,#2
+set,v3,#2
+bl,bresenham
+set,v0,#1
+set,v1,#3
+set,v2,#1
+set,v3,#3
+bl,bresenham
+set,v0,#0
+set,v1,#4
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#3
+set,v1,#3
+set,v2,#3
+set,v3,#3
+bl,bresenham
+set,v0,#4
+set,v1,#4
+set,v2,#4
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#0
+set,v1,#4
+set,v2,#4
+set,v3,#4
+bl,bresenham
+set,v0,#1
+set,v1,#1
+set,v2,#1
+set,v3,#1
+bl,bresenham
+set,v0,#2
+set,v1,#2
+set,v2,#2
+set,v3,#2
+bl,bresenham
+set,v0,#1
+set,v1,#3
+set,v2,#1
+set,v3,#3
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#0
+set,v1,#4
+set,v2,#4
+set,v3,#4
+bl,bresenham
+set,v0,#1
+set,v1,#1
+set,v2,#1
+set,v3,#1
+bl,bresenham
+set,v0,#2
+set,v1,#2
+set,v2,#2
+set,v3,#2
+bl,bresenham
+set,v0,#3
+set,v1,#3
+set,v2,#3
+set,v3,#3
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#3
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#3
+bl,bresenham
+set,v0,#1
+set,v1,#0
+set,v2,#3
+set,v3,#0
+bl,bresenham
+set,v0,#1
+set,v1,#4
+set,v2,#3
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#3
+bl,bresenham
+set,v0,#2
+set,v1,#1
+set,v2,#2
+set,v3,#3
+bl,bresenham
+set,v0,#1
+set,v1,#4
+set,v2,#1
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#3
+bl,bresenham
+set,v0,#1
+set,v1,#0
+set,v2,#3
+set,v3,#0
+bl,bresenham
+set,v0,#1
+set,v1,#4
+set,v2,#2
+set,v3,#4
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#2
+bl,bresenham
+set,v0,#3
+set,v1,#3
+set,v2,#4
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#2
+set,v1,#1
+set,v2,#2
+set,v3,#4
+bl,bresenham
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#3
+bl,bresenham
+set,v0,#1
+set,v1,#4
+set,v2,#1
+set,v3,#4
+bl,bresenham
+set,v0,#3
+set,v1,#3
+set,v2,#3
+set,v3,#3
+bl,bresenham
+set,v0,#4
+set,v1,#4
+set,v2,#4
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#0
+set,v1,#0
+set,v2,#2
+set,v3,#0
+bl,bresenham
+set,v0,#2
+set,v1,#1
+set,v2,#2
+set,v3,#3
+bl,bresenham
+set,v0,#2
+set,v1,#4
+set,v2,#4
+set,v3,#4
+bl,bresenham
+set,v0,#4
+set,v1,#0
+set,v2,#4
+set,v3,#3
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#1
+set,v1,#2
+set,v2,#4
+set,v3,#2
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#3
+set,v3,#0
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#3
+bl,bresenham
+set,v0,#0
+set,v1,#4
+set,v2,#3
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#1
+set,v3,#0
+bl,bresenham
+set,v0,#2
+set,v1,#1
+set,v2,#3
+set,v3,#1
+bl,bresenham
+set,v0,#4
+set,v1,#2
+set,v2,#4
+set,v3,#2
+bl,bresenham
+set,v0,#0
+set,v1,#4
+set,v2,#1
+set,v3,#4
+bl,bresenham
+set,v0,#2
+set,v1,#3
+set,v2,#3
+set,v3,#3
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#3
+set,v3,#0
+bl,bresenham
+set,v0,#0
+set,v1,#2
+set,v2,#3
+set,v3,#2
+bl,bresenham
+set,v0,#0
+set,v1,#4
+set,v2,#3
+set,v3,#4
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#3
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#4
+bl,bresenham
+set,v0,#4
+set,v1,#0
+set,v2,#0
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#1
+set,v3,#1
+bl,bresenham
+set,v0,#1
+set,v1,#3
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#2
+set,v1,#2
+set,v2,#4
+set,v3,#2
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#3
+set,v1,#1
+set,v2,#1
+set,v3,#3
+bl,bresenham
+set,v0,#4
+set,v1,#0
+set,v2,#4
+set,v3,#4
+bl,bresenham
+b,end_generate_letter
+set,v0,#0
+set,v1,#0
+set,v2,#4
+set,v3,#0
+bl,bresenham
+set,v0,#4
+set,v1,#1
+set,v2,#4
+set,v3,#4
+bl,bresenham
+set,v0,#0
+set,v1,#1
+set,v2,#0
+set,v3,#4
+bl,bresenham
+set,v0,#1
+set,v1,#3
+set,v2,#3
+set,v3,#3
+bl,bresenham
+set,v0,#1
+set,v1,#4
+set,v2,#3
+set,v3,#4
+bl,bresenham
+set,v0,#2
+set,v1,#2
+set,v2,#2
+set,v3,#2
+bl,bresenham
+b,end_generate_letter
+set,v0,v5
+set,v1,v12
+set,v2,#1024
+bl,points2pixel
+sum,v0,v5,#36
+ldw,v11,sk,#4
+ldw,v10,sk,#8
+ldw,v9,sk,#12
+ldw,v8,sk,#16
+ldw,v7,sk,#20
+ldw,v6,sk,#24
+ldw,v5,sk,#28
+ldw,v4,sk,#32
+ldw,lk,sk,#36
+sum,sk,sk,#40
+set,pc,lk
+dec,sk,sk,#40
+stw,lk,sk,#36
+stw,v4,sk,#32
+stw,v5,sk,#28
+stw,v6,sk,#24
+stw,v7,sk,#20
+stw,v8,sk,#16
+stw,v9,sk,#12
+stw,v10,sk,#8
+stw,v11,sk,#4
+set,v4,v0
+set,v5,v1
+set,v6,v2
+set,v7,#0
+com,v6,v5
+b,eq,end_loop_points2pixel
+ldw,v0,v6
+ldw,v1,v6,#4
+com,v0,#0
+b,eq,store_y
+com,v0,#1
+sum,eq,v1,v1,#6
+b,eq,store_y
+com,v0,#2
+sum,eq,v1,v1,#12
+b,eq,store_y
+com,v0,#3
+sum,eq,v1,v1,#18
+b,eq,store_y
+com,v0,#4
+sum,eq,v1,v1,#24
+b,eq,store_y
+b,end_loop_points2pixel
+savepix,v7,v4,v1
+sum,v6,v6,#8
+com,v6,v5
+b,lt,loop_points2pixel
+ldw,v11,sk,#4
+ldw,v10,sk,#8
+ldw,v9,sk,#12
+ldw,v8,sk,#16
+ldw,v7,sk,#20
+ldw,v6,sk,#24
+ldw,v5,sk,#28
+ldw,v4,sk,#32
+ldw,lk,sk,#36
+sum,sk,sk,#40
+set,pc,lk
+dec,sk,sk,#12
+stw,lk,sk,#8
+stw,v2,sk,#4
+stw,v1,sk
+set,v1,#255
+set,v2,#0
+savepix,v1,v0,v2
+sum,v2,v2,#1
+com,v2,#36
+b,ne,set_pixel_for
+ldw,v1,sk
+ldw,v2,sk,#4
+ldw,lk,sk,#8
+sum,sk,sk,#12
+set,pc,lk
+dec,sk,sk,#40
+stw,lk,sk,#36
+stw,v4,sk,#32
+stw,v5,sk,#28
+stw,v6,sk,#24
+stw,v7,sk,#20
+stw,v8,sk,#16
+stw,v9,sk,#12
+stw,v10,sk,#8
+stw,v11,sk,#4
+set,v4,v0
+set,v5,v1
+set,v6,v2
+set,v7,v3
+dec,v0,v6,v4
+bl,abs
+set,v8,v0
+dec,v0,v7,v5
+bl,abs
+set,v9,v0
+set,v10,v4
+set,v11,v5
+com,v4,v6
+b,le,else_x_compare
+aset,v4,#0
+b,end_if_x_compare
+set,v4,#1
+com,v5,v7
+b,le,else_y_compare
+aset,v5,#0
+b,end_if_y_compare
+set,v5,#1
+com,v8,v9
+b,le,else_differentials
+divi,v0,v8,#1
+com,v10,v6
+b,eq,end_while_dx_bigger
+stw,v10,v12
+sum,v12,v12,#4
+stw,v11,v12
+sum,v12,v12,#4
+dec,v0,v0,v9
+com,v0,#0
+b,ge,end_if_while_dx_bigger
+sum,v11,v11,v5
+sum,v0,v0,v8
+sum,v10,v10,v4
+b,while_dx_bigger
+b,end_if_differentials
+divi,v0,v9,#1
+com,v11,v7
+b,eq,end_while_dy_bigger
+stw,v10,v12
+sum,v12,v12,#4
+stw,v11,v12
+sum,v12,v12,#4
+dec,v0,v0,v8
+com,v0,#0
+b,ge,end_if_while_dy_bigger
+sum,v10,v10,v4
+sum,v0,v0,v9
+sum,v11,v11,v5
+b,while_dy_bigger
+b,end_if_differentials
+stw,v6,v12
+sum,v12,v12,#4
+stw,v7,v12
+sum,v12,v12,#4
+set,v0,v12
+ldw,v11,sk,#4
+ldw,v10,sk,#8
+ldw,v9,sk,#12
+ldw,v8,sk,#16
+ldw,v7,sk,#20
+ldw,v6,sk,#24
+ldw,v5,sk,#28
+ldw,v4,sk,#32
+ldw,lk,sk,#36
+sum,sk,sk,#40
+set,pc,lk
+ldw,v11,sk,#4
+ldw,v10,sk,#8
+ldw,v9,sk,#12
+ldw,v8,sk,#16
+ldw,v7,sk,#20
+ldw,v6,sk,#24
+ldw,v5,sk,#28
+ldw,v4,sk,#32
+ldw,lk,sk,#36
+sum,sk,sk,#40
+set,pc,lk
+divi,v1,v0,#31
+sum,v2,v0,v1
+xor,v3,v2,v1
+set,v0,v3
+set,pc,lk
