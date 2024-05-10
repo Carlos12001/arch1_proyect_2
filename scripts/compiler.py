@@ -109,7 +109,7 @@ def write_output(output_path, labels, instructions):
             # output_file.write(f"{address:X} : {hex_instr};\n")
             output_file.write(f"{hex_instr}\n")
 
-        output_file.write("END;\n")
+        # output_file.write("END;\n")
 
 
 
