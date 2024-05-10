@@ -235,16 +235,15 @@ def compileLine(line: str, labels: dict, address: int):
                     
                     # Establecer los bits I, U, B
                     i_bit = "1"
-                    u_bit = "1"  # Siempre positivo
-                    b_bit = "1" if instrc[0] == "savepix" or instrc[0] == "letter" else "0"
-                    scr2 =f"000000000000{rm_bin}"
+                    u_bit = "1"
+                    scr2 =f"00000000{rm_bin}"
         
             else:
                 # Sin offset, solo 2 registros
                 
                 # Establecer los bits I, U, B
                 i_bit = "0"
-                u_bit = "0"
+                u_bit = "1"
                 
                 # Construir la instrucción en binario con offset igual a 0
                 scr2 = "000000000000"
@@ -305,7 +304,10 @@ def main():
 
 
 
-    
+    for i,line in enumerate(lines):
+        bin = compileLine(line, labels, 4*i)
+        print(bin) 
+        print(f"{int(bin, 2):08x}")
 
 if __name__ == "__main__":
     main()
