@@ -44,7 +44,7 @@ module imem(input  logic [31:0] a,
   logic [31:0] RAM[63:0];
 
   initial
-    $readmemh("C:/Users/carlos/Repos/arch1_proyect_2/Proyecto/memfiletwo.dat",RAM);
+    $readmemh("C:/Users/pipev/Downloads/arch1_proyect_2/Proyecto/mefilethree.dat",RAM);
 
   assign rd = RAM[a[22:2]]; // word aligned
   
