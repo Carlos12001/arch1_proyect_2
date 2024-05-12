@@ -1,0 +1,31 @@
+// ISA Architecture
+digraph {
+	A [label=AddressingMode]
+	B [label=DirectAddressing]
+	C [label=IndirectAddressing]
+	D [label=IndexedAddressing]
+	E [label=DataType]
+	F [label=Integer]
+	G [label=Float]
+	H [label=Vector]
+	I [label=Instruction]
+	J [label=ArithmeticInstruction]
+	K [label=LogicalInstruction]
+	L [label=MemoryInstruction]
+	M [label=ControlInstruction]
+	N [label=RegisterSet]
+	O [label=Processor]
+	A -> B
+	A -> C
+	A -> D
+	E -> F
+	E -> G
+	E -> H
+	I -> J
+	I -> K
+	I -> L
+	I -> M
+	O -> N
+	O -> N [label=contains]
+	O -> I [label=executes]
+}
