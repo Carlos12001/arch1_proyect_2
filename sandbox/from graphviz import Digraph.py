@@ -1,26 +1,33 @@
 from graphviz import Digraph
 
-dot = Digraph(comment='Proceso de Generación de Texto')
+# Crear un objeto Digraph y configurar la orientación vertical
+dot = Digraph(comment='Requisitos de Arquitectura ISA')
+dot.attr(rankdir='TB')  # Top to Bottom para dirección vertical
 
-# Agregar nodos detallados
-dot.node('A', 'Carga del Texto desde Memoria\n(>100 palabras, poema o estrofa de canción)')
-dot.node('B', 'Procesamiento de Texto con Algoritmo de Bresenham\n(Convertir texto en vectores gráficos)')
-dot.node('C', 'Almacenamiento de Imagen Binaria\n(Resolución 250x250, fondo blanco, texto negro)')
-dot.node('D', 'Carga del Código de Ensamblador\n(Implementación de letras y firma)')
-dot.node('E', 'Interacción del Usuario\n(Observar flujo del programa ensamblador)')
-dot.node('F', 'Inicio de Transformación de Texto a Imagen\n(Usar periféricos)')
-dot.node('G', 'Visualización del Resultado en VGA\n(Imagen de salida almacenada en memoria)')
+# Agregar nodos
+dot.node('A', '2.1. Requisitos de Arquitectura ISA')
+dot.node('B', '1. Debe diseñar un conjunto de instrucciones y arquitectura')
+dot.node('C', 'a) Modos de direccionamiento')
+dot.node('D', 'b) Tamaño y tipo de datos')
+dot.node('E', 'c) Tipo y sintaxis de las instrucciones')
+dot.node('F', 'd) Registros disponibles y sus nombres')
+dot.node('G', 'e) Codificación y descripción funcional de las instrucciones')
+dot.node('H', 'Justificación de detalles desde el punto de vista de diseño')
+dot.node('I', 'Análisis en software de alto nivel para valores idóneos')
+dot.node('J', '2. Instrucciones a desarrollar son libres')
+dot.node('K', 'Proveer al menos:')
+dot.node('L', 'Instrucciones para control de flujo')
+dot.node('M', 'Operaciones aritméticas-lógicas')
+dot.node('N', 'Acceso a memoria')
+dot.node('O', '3. ISA debe ser personalizado y realizado por los estudiantes')
+dot.node('P', 'No se aceptarán ISAs ya diseñados (e.g., ARM, x86, RISC-V, otros)')
+dot.node('Q', 'Justificar cada característica del ISA')
+dot.node('R', '4. Productos finales de esta etapa')
+dot.node('S', 'a) Instruction reference sheet o green card')
+dot.node('T', 'b) Scripts usados para justificar las características del ISA')
 
-# Agregar aristas detalladas
-dot.edge('A', 'B', label='Líneas rectas para representar texto\n(Alfabeto definido, coordenadas para letras)')
-dot.edge('B', 'C', label='Guardar imagen binarizada en memoria\n(250x250, letras 5x5, espacio 1 píxel)')
-dot.edge('C', 'D', label='Permitir carga del código ensamblador\n(Letras y firma programática)')
-dot.edge('D', 'E', label='Interacción del usuario\n(Observar y ajustar)')
-dot.edge('E', 'F', label='Transformación del texto a imagen\n(Parametrización con switches)')
-dot.edge('F', 'G', label='Mostrar resultado en VGA\n(Resolución de salida en memoria)')
+# Agregar aristas para establecer un flujo vertical
+dot.edges(['AB', 'BC', 'CD', 'DE', 'EF', 'FG', 'GH', 'HI', 'IJ', 'JK', 'KL', 'LM', 'MN', 'NO', 'OP', 'PQ', 'QR', 'RS', 'ST'])
 
-# Mostrar el gráfico
-print(dot.source)
-
-# Guardar y mostrar el gráfico
-dot.render('proceso_de_generacion_de_texto_detallado', view=True)
+# Renderizar el gráfico
+dot.render('requisitos_isa_vertical', format='png', view=True)
