@@ -1,0 +1,39 @@
+// Requisitos de Microarquitectura y Software
+digraph {
+	rankdir=TB
+	A [label="2.2. Requisitos de Microarquitectura"]
+	B [label="1. La implementación diseñada debe ser correcta respecto a las reglas definidas por la arquitectura."]
+	C [label="2. El procesador diseñado debe emplear pipelining."]
+	D [label="3. Debe ser implementado usando SystemVerilog."]
+	E [label="4. No se permite realizar módulos especializados de hardware."]
+	F [label="5. El procesador debe tener capacidad de segmentación de memoria en datos e instrucciones."]
+	G [label="6. Cada unidad funcional del sistema debe ser debidamente probada en simulación."]
+	H [label="7. Los productos finales de esta etapa son:"]
+	I [label="a) El código fuente (SystemVerilog) y el bitstream para programar la tarjeta de desarrollo mediante simulación."]
+	J [label="b) Un diagrama de bloques de la microarquitectura y descripción de las interacciones entre ellos."]
+	K [label="c) Simulaciones de las pruebas unitarias y de integración."]
+	L [label="d) Reporte de consumo de recursos del FPGA para el modelo."]
+	M [label="Requisitos de Software:"]
+	N [label="1. Crear una aplicación (software) empleando la arquitectura diseñada."]
+	O [label="2. Debe realizar un programa compilador que permita traducir las instrucciones del ISA a binario."]
+	P [label="3. Los productos finales de esta etapa son:"]
+	Q [label="a) Programa compilador internamente documentado."]
+	R [label="b) Código ensamblador para la arquitectura diseñada."]
+	A -> B
+	B -> C
+	C -> D
+	D -> E
+	E -> F
+	F -> G
+	G -> H
+	H -> I
+	I -> J
+	J -> K
+	K -> L
+	L -> M
+	M -> N
+	N -> O
+	O -> P
+	P -> Q
+	Q -> R
+}
