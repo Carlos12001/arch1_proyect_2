@@ -1,0 +1,16 @@
+// Proceso de Generación de Texto
+digraph {
+	A [label="Carga de Texto"]
+	B [label="Procesamiento de Texto con Bresenham"]
+	C [label="Almacenamiento de Imagen Binaria"]
+	D [label="Carga de Código de Ensamblador"]
+	E [label="Interacción del Usuario"]
+	F [label="Transformación de Texto a Imagen"]
+	G [label="Visualización en VGA"]
+	A -> B
+	B -> C
+	C -> D
+	D -> E
+	E -> F
+	F -> G
+}

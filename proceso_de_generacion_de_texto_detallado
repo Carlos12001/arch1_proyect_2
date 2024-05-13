@@ -1,0 +1,29 @@
+// Proceso de Generación de Texto
+digraph {
+	A [label="Carga del Texto desde Memoria
+(>100 palabras, poema o estrofa de canción)"]
+	B [label="Procesamiento de Texto con Algoritmo de Bresenham
+(Convertir texto en vectores gráficos)"]
+	C [label="Almacenamiento de Imagen Binaria
+(Resolución 250x250, fondo blanco, texto negro)"]
+	D [label="Carga del Código de Ensamblador
+(Implementación de letras y firma)"]
+	E [label="Interacción del Usuario
+(Observar flujo del programa ensamblador)"]
+	F [label="Inicio de Transformación de Texto a Imagen
+(Usar periféricos)"]
+	G [label="Visualización del Resultado en VGA
+(Imagen de salida almacenada en memoria)"]
+	A -> B [label="Líneas rectas para representar texto
+(Alfabeto definido, coordenadas para letras)"]
+	B -> C [label="Guardar imagen binarizada en memoria
+(250x250, letras 5x5, espacio 1 píxel)"]
+	C -> D [label="Permitir carga del código ensamblador
+(Letras y firma programática)"]
+	D -> E [label="Interacción del usuario
+(Observar y ajustar)"]
+	E -> F [label="Transformación del texto a imagen
+(Parametrización con switches)"]
+	F -> G [label="Mostrar resultado en VGA
+(Resolución de salida en memoria)"]
+}
